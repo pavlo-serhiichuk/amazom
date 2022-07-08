@@ -1,6 +1,8 @@
 import axios from 'axios'
+import {useEffect, useState} from 'react'
+import {AppDispatch} from '../store'
 
-const serverURL = 'http://localhost:1122/'
+export const serverURL = 'http://localhost:1122/'
 
 const get = async (url: string) => await axios.get(`${serverURL}${url}`)
 const post = async (url: string, data: any) => await axios.post(`${serverURL}${url}`, data)
@@ -20,3 +22,4 @@ export const productsAPI = {
     return get(category)
   }
 }
+
