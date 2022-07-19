@@ -4,8 +4,9 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
 import {IProduct} from '../../models/IProduct'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
-import {Content, ProductsWrapper, Wrapper} from './Category.style'
+import {Content, ProductsWrapper} from './Category.style'
 import Loader from '../../components/Loader/Loader.component'
+import {MarketWrapper as Wrapper} from '../pages.style'
 
 const Category = () => {
   const {loadProducts} = useActions()
@@ -16,7 +17,6 @@ const Category = () => {
 
   return (
     <Wrapper>
-      <hr/>
       <Content>
         <Sidebar />
         {

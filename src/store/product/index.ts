@@ -13,7 +13,7 @@ import {productsAPI} from '../../api/api'
 
 const initialState: ProductState = {
   products: [] as IProduct[],
-  category: 'books',
+  category: '',
   isLoading: false,
   error: null
 }

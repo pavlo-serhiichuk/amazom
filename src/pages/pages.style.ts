@@ -11,3 +11,11 @@ export const LoginWrapper = styled.div`
   padding: 40px;
   box-sizing: border-box;  
 `
+
+export const MarketWrapper = styled.div`
+  width: 90%;
+  margin: auto;
+  background-color: #fff;
+  min-height: calc(100vh - 125px);
+  box-sizing: border-box;
+`

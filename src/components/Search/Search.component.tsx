@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import useDebounce from '../../hooks/useDebounce'
 import {useActions} from '../../hooks/useActions'
-import {Form, Input} from './Search.style'
+import {Button, Form, Input} from './Search.style'
 
 const Search = () => {
   const [productName, setProductName] = useState('')
@@ -35,7 +35,7 @@ const Search = () => {
   return (
     <Form action="" onSubmit={handleSubmit}>
       <Input value={productName} onChange={onChange} />
-      <button>Search</button>
+      <Button>Search</Button>
     </Form>
   );
 };

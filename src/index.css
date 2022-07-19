@@ -14,4 +14,15 @@ code {
 
 a {
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input, button {
+  all: unset;
+}
+
+.active {
+  background-color: rgba(70, 59, 124, 0.88);
 }

@@ -9,14 +9,13 @@ import styled from 'styled-components'
 // `
 
 export const Wrapper = styled.div`
-  margin: auto;
+  margin: -150px auto;
 `
 export const Content = styled.div`
   display: flex;
   justify-content: center;
   //width: 100%;
   flex-wrap: wrap;
-  border: 3px solid red;
   gap: 10px;
 `
 

@@ -1,6 +1,5 @@
 import React, {FC} from 'react'
-import {NavLink} from 'react-router-dom'
-import {StyledLinkWrapper, Text} from './StyledLink.style'
+import {A} from './StyledLink.style'
 import {useActions} from '../../hooks/useActions'
 
 interface StyledLinkProps {
@@ -17,12 +16,8 @@ export const StyledLink: FC<StyledLinkProps> = ({children, to, category}) => {
   }
 
   return (
-    <StyledLinkWrapper>
-      <NavLink to={to} onClick={handleClick}>
-        <Text>
+    <A to={to} onClick={handleClick}>
           {children}
-        </Text>
-      </NavLink>
-    </StyledLinkWrapper>
+    </A>
   )
 }

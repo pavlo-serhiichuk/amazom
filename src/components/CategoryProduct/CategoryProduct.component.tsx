@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {IProduct} from '../../models/IProduct'
-import {Wrapper} from './CategoryProduct.style'
+import {AddToWishes, Button, Details, Img, Purchase, Title, Wrapper} from './CategoryProduct.style'
 
 interface ProductProps {
   product: IProduct
@@ -9,7 +9,14 @@ interface ProductProps {
 const CategoryProduct: FC<ProductProps> = ({product}) => {
   return (
     <Wrapper>
-      {product.title}
+      <Img url={product.image[0]} />
+      <Details>
+        <Title>{product.title}</Title>
+        <Purchase>
+          <Button>Add To Cart</Button>
+          <AddToWishes />
+        </Purchase>
+      </Details>
     </Wrapper>
   );
 };

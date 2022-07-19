@@ -1,6 +1,5 @@
 import React from 'react';
-import {UserLinks, Wrapper} from './Header.style'
-import {StyledLink} from '../StyledLink/StyledLink.component'
+import {A, UserLinks, Wrapper} from './Header.style'
 import {RouteEnum} from '../../constants/routes'
 import Search from '../Search/Search.component'
 
@@ -8,14 +7,14 @@ const Header = () => {
   return (
     <Wrapper>
       <UserLinks>
-        <StyledLink to={RouteEnum.MAIN}>Amazom</StyledLink>
-        <StyledLink to={RouteEnum.MARKET}>Market</StyledLink>
-        <StyledLink to={RouteEnum.ARTICLES}>Articles</StyledLink>
+        <A to={RouteEnum.MAIN}>Amazom</A>
+        <A to={RouteEnum.MARKET}>Market</A>
+        <A to={RouteEnum.ARTICLES}>Articles</A>
       </UserLinks>
       <Search />
       <UserLinks>
-        <StyledLink to="/signup">Sign Up</StyledLink>
-        <StyledLink to="/login">Login</StyledLink>
+        <A to="/signup">Sign Up</A>
+        <A to="/login">Login</A>
       </UserLinks>
     </Wrapper>
   );

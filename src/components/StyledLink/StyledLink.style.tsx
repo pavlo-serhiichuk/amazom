@@ -1,15 +1,13 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
-export const StyledLinkWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0 15px;
-  box-sizing: border-box;
-  &:hover {
-    background-color: rgba(70, 59, 124, 0.88);
-    //border: 1px solid #fff;
-  }
+export const A = styled(Link)`
+  padding: 5px 20px;  
+  //border: 1px solid grey;
+  //border-right: 0;
+  //&:hover {
+  //  box-shadow: 0 0 3px #000;
+  //}
 `
 
 export const Text = styled.div`
