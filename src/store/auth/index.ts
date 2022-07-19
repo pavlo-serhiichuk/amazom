@@ -7,9 +7,9 @@ import {
   SetLoadingAction, SetUserAction,
 } from './types'
 import {IUser} from '../../models/IUser'
+import {AppDispatch} from '../index'
 
 const initialState: AuthState = {
-
   isAuth: false,
   user: {} as IUser,
   isLoading: false,
@@ -36,6 +36,9 @@ export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({type: AuthEnum.SET_USER, payload: user}),
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: AuthEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: AuthEnum.SET_ERROR, payload: error}),
+  login: () => async (dispatch: AppDispatch) => {
+
+  },
 }
 
 

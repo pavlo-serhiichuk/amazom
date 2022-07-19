@@ -1,8 +1,8 @@
-# MarketPage
+# Market
 ***
 
 **Repositories:**
-- FE - https://github.com/pavlo-serhiichuk/market
+- FE - https://github.com/pavlo-serhiichuk/mymarket
 ***
 **Project runs locally on:**
 - FE - http://localhost:3000

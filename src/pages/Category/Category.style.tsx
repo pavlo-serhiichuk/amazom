@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   background-color: #fff;
   padding: 30px;
   min-height: calc(100vh - 125px);
+  box-sizing: border-box;
 `
 export const Content = styled.div`
   display: flex;

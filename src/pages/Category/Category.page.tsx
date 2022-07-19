@@ -5,27 +5,30 @@ import {useActions} from '../../hooks/useActions'
 import {IProduct} from '../../models/IProduct'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
 import {Content, ProductsWrapper, Wrapper} from './Category.style'
-import Search from '../../components/Search/Search.component'
+import Loader from '../../components/Loader/Loader.component'
 
-const CategoryPage = () => {
+const Category = () => {
   const {loadProducts} = useActions()
-  const {category, products} = useTypedSelector(state => state.product)
+  const {category, products, isLoading} = useTypedSelector(state => state.product)
   useEffect(() => {
     loadProducts(category)
   }, [category])
 
   return (
     <Wrapper>
-      <Search />
       <hr/>
       <Content>
         <Sidebar />
-        <ProductsWrapper>
+        {
+          isLoading
+          ? <Loader />
+          : <ProductsWrapper>
           {products.map((product: IProduct) => <CategoryProduct product={product} key={product.id} />)}
         </ProductsWrapper>
+        }
       </Content>
     </Wrapper>
   );
 };
 
-export default CategoryPage;
+export default Category;

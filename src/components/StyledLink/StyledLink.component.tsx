@@ -1,8 +1,7 @@
-import React, {FC, useEffect} from 'react'
+import React, {FC} from 'react'
 import {NavLink} from 'react-router-dom'
-import {StyledLinkWrapper} from './StyledLink.style'
+import {StyledLinkWrapper, Text} from './StyledLink.style'
 import {useActions} from '../../hooks/useActions'
-import {useTypedSelector} from '../../hooks/useTypedSelector'
 
 interface StyledLinkProps {
   children: React.ReactNode
@@ -14,12 +13,16 @@ export const StyledLink: FC<StyledLinkProps> = ({children, to, category}) => {
   const {setCategory} = useActions()
 
   const handleClick = () => {
-    return category ? setCategory(category): null
+    return category ? setCategory(category) : null
   }
 
   return (
     <StyledLinkWrapper>
-      <NavLink to={to} onClick={handleClick}>{children}</NavLink>
+      <NavLink to={to} onClick={handleClick}>
+        <Text>
+          {children}
+        </Text>
+      </NavLink>
     </StyledLinkWrapper>
   )
 }

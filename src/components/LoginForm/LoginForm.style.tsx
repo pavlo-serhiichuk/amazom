@@ -1,23 +1,7 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import styled from 'styled-components'
 
-type FormValues = {
-  email: string;
-  password: string;
-};
-
-export default function LoginForm() {
-  const { register, handleSubmit } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = data => console.log(data);
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">Email:</label>
-      <input type="email" {...register("email")} />
-      <label htmlFor="email">Email:</label>
-      <input {...register("password")} type="password" />
-
-      <input type="submit" />
-    </form>
-  );
-}
+export const Form = styled.form`
+  display: grid;
+  grid-template-columns: 100px 200px;
+  gap: 10px 20px;
+`

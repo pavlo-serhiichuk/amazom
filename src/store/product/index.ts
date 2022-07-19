@@ -11,7 +11,6 @@ import {AppDispatch} from '../index'
 import {productsAPI} from '../../api/api'
 
 
-
 const initialState: ProductState = {
   products: [] as IProduct[],
   category: 'books',
@@ -40,16 +39,18 @@ export const ProductActionCreators = {
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: ProductEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: ProductEnum.SET_ERROR, payload: error}),
   loadProducts: (category: string) => async (dispatch: AppDispatch) => {
-    try {
-      dispatch(ProductActionCreators.setLoading(true))
-      let response = await productsAPI.getProducts(category)
-      dispatch(ProductActionCreators.setProducts(response.data))
-      console.log(response.data)
-    } catch (e: any) {
-      dispatch(ProductActionCreators.setError(e.message))
-    } finally {
-      dispatch(ProductActionCreators.setLoading(false))
-    }
+    dispatch(ProductActionCreators.setLoading(true))
+    setTimeout(async () => {
+      try {
+        let response = await productsAPI.getProducts(category)
+        dispatch(ProductActionCreators.setProducts(response.data))
+      } catch (e: any) {
+        dispatch(ProductActionCreators.setError(e.message))
+      } finally {
+        dispatch(ProductActionCreators.setLoading(false))
+      }
+    }, 2000)
+
   }
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import {Form} from './SignUpForm.style'
 
 type FormValues = {
   email: string;
@@ -13,7 +14,7 @@ export default function SignUpForm() {
   const onSubmit: SubmitHandler<FormValues> = data => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="email">Email:</label>
       <input type="email" {...register("email")} />
       <label htmlFor="firstName">First name:</label>
@@ -22,8 +23,8 @@ export default function SignUpForm() {
       <input {...register("lastName")} />
       <label htmlFor="Password">Password:</label>
       <input {...register("password")} type="password" />
-
+      <div></div>
       <input type="submit" />
-    </form>
+    </Form>
   );
 }

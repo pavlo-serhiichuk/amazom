@@ -1,10 +1,11 @@
 import React from 'react';
+import {Wrapper} from './Loader.style'
 
 const Loader = () => {
   return (
-    <div>
-      
-    </div>
+    <Wrapper>
+      Loading...
+    </Wrapper>
   );
 };
 

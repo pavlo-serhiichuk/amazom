@@ -1,40 +1,29 @@
 import React from 'react'
-import MarketPage from '../pages/Market/Market.page'
-import Login from '../pages/Login/Login'
-import SignUp from '../pages/SignUp/SignUp'
-import CategoryPage from '../pages/Category/Category.page'
+import Market from '../pages/Market/Market.page'
+import Login from '../pages/Login/Login.page'
+import SignUp from '../pages/SignUp/SignUp.page'
+import Category from '../pages/Category/Category.page'
+import {RouteEnum} from '../constants/routes'
+import Main from '../pages/Main/Main.page'
+import Articles from '../pages/Articles/Articles.page'
 
 export interface IRoute {
   path: string
   element: React.ReactNode
 }
 
-enum RouteName {
-  MARKET = '/market',
-  // CLASSES = '/classes',
-  // FORMS = '/forms',
-  // CLASS_CONTEXT = '/class/context',
-  // FUNCTION_CONTEXT = '/class/function',
-  // REACT_BITS = '/react-bits',
-  // COMMON = '/common',
-  CATEGORY = '/market/:category',
-  SIGNIN = '/signup',
-  LOGIN = '/login',
-  // USERS = '/users',
-  // ERROR = '/error',
-}
-
-
 export const commonRoutes = [
-{path: RouteName.MARKET, element: <MarketPage />},
-{path: RouteName.CATEGORY, element: <CategoryPage />},
+  {path: RouteEnum.MAIN, element: <Main />},
+  {path: RouteEnum.MARKET, element: <Market />},
+  {path: RouteEnum.CATEGORY, element: <Category />},
+  {path: RouteEnum.ARTICLES, element: <Articles />},
 ]
 
 export const publicRoutes: IRoute[] = [
-  {path: RouteName.LOGIN, element: <Login />},
-  {path: RouteName.SIGNIN, element: <SignUp />},
+  {path: RouteEnum.LOGIN, element: <Login />},
+  {path: RouteEnum.SIGNIN, element: <SignUp />},
 ];
 //
 // export const privateRoutes: IRoute[] = [
-//   // {path: RouteName.PROFILE, element: <Profile />, name: 'My Profile'},
+//   // {path: RouteEnum.PROFILE, element: <Profile />, name: 'My Profile'},
 // ]

@@ -1,18 +1,22 @@
 import React from 'react';
 import {UserLinks, Wrapper} from './Header.style'
 import {StyledLink} from '../StyledLink/StyledLink.component'
-import {NavLink} from 'react-router-dom'
+import {RouteEnum} from '../../constants/routes'
+import Search from '../Search/Search.component'
 
 const Header = () => {
   return (
     <Wrapper>
-      <StyledLink to="/market">Market</StyledLink>
-      <div>
-        <UserLinks>
-          <StyledLink to="/signup">Sign Up</StyledLink>
-          <StyledLink to="/login">Login</StyledLink>
-        </UserLinks>
-      </div>
+      <UserLinks>
+        <StyledLink to={RouteEnum.MAIN}>Amazom</StyledLink>
+        <StyledLink to={RouteEnum.MARKET}>Market</StyledLink>
+        <StyledLink to={RouteEnum.ARTICLES}>Articles</StyledLink>
+      </UserLinks>
+      <Search />
+      <UserLinks>
+        <StyledLink to="/signup">Sign Up</StyledLink>
+        <StyledLink to="/login">Login</StyledLink>
+      </UserLinks>
     </Wrapper>
   );
 };

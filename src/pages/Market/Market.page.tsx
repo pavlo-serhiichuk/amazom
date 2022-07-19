@@ -1,18 +1,10 @@
-import React, {useEffect} from 'react';
-import {useActions} from '../../hooks/useActions'
-import {useTypedSelector} from '../../hooks/useTypedSelector'
-import {IProduct} from '../../models/IProduct'
-import CategoryProduct from '../../components/CategoryProduct/CategoryProduct.component'
+import React from 'react';
 import {Content, ProductsWrapper, Wrapper} from './Market.style'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
-import Search from '../../components/Search/Search.component'
 
-const MarketPage = () => {
-
+const Market = () => {
   return (
     <Wrapper>
-      <Search />
-      <hr/>
       <Content>
         <Sidebar />
       <ProductsWrapper>
@@ -23,4 +15,4 @@ const MarketPage = () => {
   );
 };
 
-export default MarketPage;
+export default Market;

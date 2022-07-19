@@ -1,6 +1,4 @@
 import axios from 'axios'
-import {useEffect, useState} from 'react'
-import {AppDispatch} from '../store'
 
 export const serverURL = 'http://localhost:1122/'
 
@@ -19,7 +17,12 @@ export const authAPI = {
 
 export const productsAPI = {
   getProducts(category: string) {
-    return get(category)
+    return get(`products?category=${category}`)
   }
 }
 
+export const articlesAPI = {
+  getArticles() {
+    return get('articles')
+  }
+}

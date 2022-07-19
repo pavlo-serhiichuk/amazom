@@ -1,13 +1,14 @@
 import React from 'react';
 import {Wrapper} from './Sidebar.style'
 import {StyledLink} from '../StyledLink/StyledLink.component'
+import {RouteEnum} from '../../constants/routes'
 
 const Sidebar = () => {
   return (
     <Wrapper>
-        <StyledLink to={'/market/books'} category="books">Books</StyledLink>
-        <StyledLink to={'/market/guitars'} category="guitars">Guitars</StyledLink>
-        <StyledLink to={'/market/vouchers'} category="vouchers">Vouchers</StyledLink>
+        <StyledLink to={RouteEnum.BOOKS} category="books">Books</StyledLink>
+        <StyledLink to={RouteEnum.GUITARS} category="guitars">Guitars</StyledLink>
+        <StyledLink to={RouteEnum.VOUCHERS} category="vouchers">Vouchers</StyledLink>
     </Wrapper>
   );
 };
