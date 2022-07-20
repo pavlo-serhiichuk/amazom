@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import {BiHeart as LikedIcon} from "react-icons/bi";
+import {BiHeart as LikedIcon} from 'react-icons/bi';
+import {NavLink} from 'react-router-dom'
 
 interface ImgProps {
   url: string
@@ -8,13 +9,15 @@ interface ImgProps {
 export const Wrapper = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.14);
   height: 250px;
-  max-width: 370px;
+  max-width: 500px;
   display: flex;
   justify-content: left;
   padding: 10px;
   gap: 15px;
+  box-shadow: 0 0 5px rgba(153, 153, 153, 0.38);
+
   &:hover {
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.38);
+    box-shadow: 0 0 5px rgba(153, 153, 153, 0.88);
   }
 `
 
@@ -47,14 +50,14 @@ export const AddToWishes = styled(LikedIcon)`
   cursor: pointer;
 `
 
-export const Title = styled.span`
+export const Title = styled(NavLink)`
   font-weight: bold;
   font-size: 20px;
   height: 90px;
   overflow: hidden;
 `
 
-export const Img = styled.div<ImgProps>`
+export const Img = styled(NavLink)<ImgProps>`
   border: none;
   background-color: #fff;
   min-width: 150px;
@@ -67,7 +70,7 @@ export const Img = styled.div<ImgProps>`
   background-color: rgba(96, 95, 95, 0.16);
 
   &:hover {
-    box-shadow: 0 0 5px #74a82b;
+    cursor: pointer;
   }
 `
 

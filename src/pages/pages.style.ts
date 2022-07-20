@@ -13,7 +13,6 @@ export const LoginWrapper = styled.div`
 `
 
 export const MarketWrapper = styled.div`
-  width: 90%;
   margin: auto;
   background-color: #fff;
   min-height: calc(100vh - 125px);

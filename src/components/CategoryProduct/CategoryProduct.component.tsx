@@ -6,14 +6,23 @@ interface ProductProps {
   product: IProduct
 }
 
+
 const CategoryProduct: FC<ProductProps> = ({product}) => {
+  const productPath = `/market/${product.category}/${product.id}`
   return (
     <Wrapper>
-      <Img url={product.image[0]} />
+      <Img
+        to={productPath}
+        url={product.image[0]}
+      />
       <Details>
-        <Title>{product.title}</Title>
+        <Title to={productPath}>
+          {product.title}
+        </Title>
         <Purchase>
-          <Button>Add To Cart</Button>
+          <Button>
+            Add To Cart
+          </Button>
           <AddToWishes />
         </Purchase>
       </Details>

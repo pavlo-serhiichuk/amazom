@@ -7,13 +7,10 @@ export const Content = styled.div`
 `
 export const ProductsWrapper = styled.div`
   width: 100%;
-  //display: grid;
-  //grid-template-columns: 1fr 1fr 1fr;
-  //grid-auto-flow: column;
-  //grid-template-columns: repeat(auto-fill, 350px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-content: start;
   gap: 10px;
   margin: 10px;
 `

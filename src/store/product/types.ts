@@ -2,6 +2,7 @@ import {IProduct} from '../../models/IProduct'
 
 export interface ProductState {
   products: IProduct[]
+  currentProduct: IProduct
   category: string
   isLoading: boolean
   error: string | null
@@ -9,6 +10,7 @@ export interface ProductState {
 
 export enum ProductEnum {
   SET_PRODUCTS = 'SET_PRODUCTS',
+  SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT',
   SET_CATEGORY = 'SET_CATEGORY',
   SET_LOADING = 'SET_LOADING',
   SET_ERROR = 'SET_ERROR'
@@ -19,11 +21,15 @@ export interface SetProductsAction {
   payload: IProduct[]
 }
 
+export interface SetCurrentProductAction {
+  type: ProductEnum.SET_CURRENT_PRODUCT
+  payload: IProduct
+}
+
 export interface SetCategoryAction {
   type: ProductEnum.SET_CATEGORY
   payload: string
 }
-
 
 export interface SetLoadingAction {
   type: ProductEnum.SET_LOADING
@@ -37,6 +43,7 @@ export interface SetErrorAction {
 
 export type ProductActionType =
   SetProductsAction
+  | SetCurrentProductAction
   | SetCategoryAction
   | SetLoadingAction
   | SetErrorAction

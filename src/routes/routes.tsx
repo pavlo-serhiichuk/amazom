@@ -6,6 +6,7 @@ import Category from '../pages/Category/Category.page'
 import {RouteEnum} from '../constants/routes'
 import Main from '../pages/Main/Main.page'
 import Articles from '../pages/Articles/Articles.page'
+import Product from '../components/Product/Product.component'
 
 export interface IRoute {
   path: string
@@ -17,6 +18,7 @@ export const commonRoutes = [
   {path: RouteEnum.MARKET, element: <Market />},
   {path: RouteEnum.CATEGORY, element: <Category />},
   {path: RouteEnum.ARTICLES, element: <Articles />},
+  {path: RouteEnum.PRODUCT, element: <Product />}
 ]
 
 export const publicRoutes: IRoute[] = [

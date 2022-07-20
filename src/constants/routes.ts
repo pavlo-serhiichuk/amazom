@@ -1,6 +1,7 @@
 export enum RouteEnum {
   MAIN = '/',
   MARKET = '/market',
+  PRODUCT = '/market/:category/:id',
   BOOKS = '/market/books',
   GUITARS = '/market/guitars',
   VOUCHERS = '/market/vouchers',
