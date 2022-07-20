@@ -1,12 +1,11 @@
 import React from 'react';
-import HeaderComponent from '../Header/Header.component'
+import Header from '../Header/Header.component'
 import {Wrapper} from './App.style'
 import AppRouter from '../AppRouter/AppRouter'
-
 function App() {
   return (
     <Wrapper>
-      <HeaderComponent />
+      <Header />
       <AppRouter />
     </Wrapper>
   );

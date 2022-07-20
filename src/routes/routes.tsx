@@ -7,6 +7,9 @@ import {RouteEnum} from '../constants/routes'
 import Main from '../pages/Main/Main.page'
 import Articles from '../pages/Articles/Articles.page'
 import Product from '../components/Product/Product.component'
+import Account from '../pages/Accout/Account.page'
+import Wishes from '../pages/Wishes/Wishes.page'
+import Cart from '../pages/Cart/Cart.page'
 
 export interface IRoute {
   path: string
@@ -23,9 +26,11 @@ export const commonRoutes = [
 
 export const publicRoutes: IRoute[] = [
   {path: RouteEnum.LOGIN, element: <Login />},
-  {path: RouteEnum.SIGNIN, element: <SignUp />},
+  {path: RouteEnum.SIGNUP, element: <SignUp />},
 ];
 //
-// export const privateRoutes: IRoute[] = [
-//   // {path: RouteEnum.PROFILE, element: <Profile />, name: 'My Profile'},
-// ]
+export const privateRoutes: IRoute[] = [
+  {path: RouteEnum.ACCOUNT, element: <Account />},
+  {path: RouteEnum.WISHES, element: <Wishes />},
+  {path: RouteEnum.CART, element: <Cart />},
+]

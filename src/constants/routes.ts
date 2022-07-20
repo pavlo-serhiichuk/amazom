@@ -1,4 +1,5 @@
 export enum RouteEnum {
+  ACCOUNT = '/account',
   MAIN = '/',
   MARKET = '/market',
   PRODUCT = '/market/:category/:id',
@@ -8,7 +9,9 @@ export enum RouteEnum {
   CATEGORY = '/market/:category',
   ARTICLE = '/article',
   ARTICLES = '/articles',
-  SIGNIN = '/signup',
+  SIGNUP = '/signup',
   LOGIN = '/login',
+  WISHES = '/wishes',
+  CART = '/cart'
 }
 

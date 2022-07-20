@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Form = styled.form`
   display: flex;
   align-items: center;
-  @media screen and (max-width: 835px) {display: none;}
+  @media screen and (max-width: 992px) {display: none;}
 
 `
 
@@ -15,8 +15,8 @@ export const Input = styled.input`
   box-sizing: border-box;
   padding-left: 10px;
   background-color: #fff;
-  @media screen and (max-width: 1200px) {width: 300px;}
-  @media screen and (max-width: 992px) {width: 200px;}
+  @media screen and (max-width: 1400px) {width: 385px;}
+  @media screen and (max-width: 1200px) {width: 200px;}
 `
 
 export const Button = styled.button`
