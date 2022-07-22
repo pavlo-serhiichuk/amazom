@@ -21,10 +21,8 @@ const initialState: AuthState = {
 const authReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case AuthEnum.SET_AUTH:
-      console.log('entered')
       return {...state, isAuth: action.payload}
     case AuthEnum.SET_USER:
-      console.log('entered')
       return {...state, user: action.payload}
     case AuthEnum.SET_LOADING:
       return {...state, isLoading: action.payload}
@@ -41,18 +39,31 @@ export const AuthActionCreators = {
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: AuthEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: AuthEnum.SET_ERROR, payload: error}),
   login: (email: string, password: string) => async (dispatch: AppDispatch) => {
-    const response = await axios.post(`${serverURL}login`, {email, password})
-    console.log(response.data.user)
-    dispatch(AuthActionCreators.setUser(response.data.user))
-    dispatch(AuthActionCreators.setAuth(true))
+    dispatch(AuthActionCreators.setLoading(true))
+    try {
+      const response = await axios.post(`${serverURL}login`, {email, password})
+      dispatch(AuthActionCreators.setUser(response.data.user))
+      dispatch(AuthActionCreators.setAuth(true))
+
+    } catch (e: any) {
+      dispatch(AuthActionCreators.setError(e.message))
+    } finally {
+      dispatch(AuthActionCreators.setLoading(false))
+    }
   },
   signUp: (firstName: string, lastName: string, email: string, password: string) => async (dispatch: AppDispatch) => {
-    const response = await axios.post(`${serverURL}register`, {firstName, lastName, email, password})
-    console.log(response.data.user)
-    dispatch(AuthActionCreators.setUser(response.data.user))
-    dispatch(AuthActionCreators.setAuth(true))
+    dispatch(AuthActionCreators.setLoading(true))
+    try {
+      const response = await axios.post(`${serverURL}register`, {firstName, lastName, email, password})
+      dispatch(AuthActionCreators.setUser(response.data.user))
+      dispatch(AuthActionCreators.setAuth(true))
+    } catch (e: any) {
+      dispatch(AuthActionCreators.setError(e.message))
+    } finally {
+      dispatch(AuthActionCreators.setLoading(false))
+    }
   }
 }
 
 
-  export default authReducer
+export default authReducer

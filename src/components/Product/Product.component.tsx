@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {MarketWrapper as Wrapper} from '../../pages/pages.style'
+import {ContentWrapper as Wrapper} from '../../pages/pages.style'
 import {useParams} from 'react-router-dom'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
@@ -10,6 +10,7 @@ const Product = () => {
   const {loadCurrentProduct} = useActions()
   const params: any = useParams()
   useEffect(() => {
+    console.log('params: ', params)
     loadCurrentProduct(params.category, params.id)
   }, [])
   console.log(product)

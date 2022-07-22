@@ -6,7 +6,7 @@ import {IProduct} from '../../models/IProduct'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
 import {Content, ProductsWrapper} from './Category.style'
 import Loader from '../../components/Loader/Loader.component'
-import {MarketWrapper as Wrapper} from '../pages.style'
+import {ContentWrapper as Wrapper} from '../pages.style'
 import {useParams} from 'react-router-dom'
 
 const Category = () => {

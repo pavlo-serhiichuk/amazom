@@ -1,18 +1,15 @@
 import styled from 'styled-components'
 
-export const LoginWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
+export const AuthWrapper = styled.div`
+  padding: 20px 49px;
+  width: 346px;
   margin: 55px auto;
   background-color: #fff;
-  min-height: 400px;
-  box-sizing: border-box;  
+  min-height: 288px; 
 `
 
-export const MarketWrapper = styled.div`
-  margin: auto;
+export const ContentWrapper = styled.div`
+  margin: 0;
   background-color: #fff;
   min-height: calc(100vh - 125px);
   box-sizing: border-box;

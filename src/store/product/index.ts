@@ -55,7 +55,7 @@ export const ProductActionCreators = {
       } finally {
         dispatch(ProductActionCreators.setLoading(false))
       }
-    }, 2000)
+    }, 500)
   },
   loadCurrentProduct: (category: string, productId: number) => async (dispatch: AppDispatch) => {
     dispatch(ProductActionCreators.setLoading(true))

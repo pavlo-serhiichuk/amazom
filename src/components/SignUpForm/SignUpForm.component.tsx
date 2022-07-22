@@ -1,6 +1,6 @@
 import React from 'react';
 import {useForm, SubmitHandler} from 'react-hook-form';
-import {Form, Grid, Input, Label, Submit} from './SignUpForm.style'
+import {Form, Input, Label, Submit} from './SignUpForm.style'
 import {useActions} from '../../hooks/useActions'
 import {useNavigate} from 'react-router-dom'
 
@@ -24,16 +24,22 @@ export default function SignUpForm() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <h3>Registration:</h3>
-      <Grid>
-        <Label htmlFor="firstName">First name:</Label>
+      <Label>
+        First name:
         <Input {...register('firstName')} />
-        <Label htmlFor="lastName">Last name:</Label>
+      </Label>
+      <Label>
+        Last name:
         <Input {...register('lastName')} />
-        <Label htmlFor="email">Email:</Label>
+      </Label>
+      <Label>
+        Email:
         <Input type="email" {...register('email')} />
-        <Label htmlFor="Password">Password:</Label>
+      </Label>
+      <Label>
+        Password:
         <Input {...register('password')} type="password" />
-      </Grid>
+      </Label>
       <Submit type="submit" />
     </Form>
   );

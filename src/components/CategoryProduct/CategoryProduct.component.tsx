@@ -1,14 +1,24 @@
 import React, {FC} from 'react';
 import {IProduct} from '../../models/IProduct'
 import {AddToWishes, Button, Details, Img, Purchase, Title, Wrapper} from './CategoryProduct.style'
+import {useActions} from '../../hooks/useActions'
 
 interface ProductProps {
   product: IProduct
 }
 
-
 const CategoryProduct: FC<ProductProps> = ({product}) => {
+  const {addCartId, addWishesId} = useActions()
   const productPath = `/market/${product.category}/${product.id}`
+
+  const handleCartClick = () => {
+    addCartId(product.id)
+  }
+
+  const handleWishesClick = () => {
+    addWishesId(product.id)
+  }
+
   return (
     <Wrapper>
       <Img
@@ -20,10 +30,12 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
           {product.title}
         </Title>
         <Purchase>
-          <Button>
+          <Button onClick={handleCartClick}>
             Add To Cart
           </Button>
-          <AddToWishes />
+          <div onClick={handleWishesClick}>
+            <AddToWishes />
+          </div>
         </Purchase>
       </Details>
     </Wrapper>

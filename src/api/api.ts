@@ -27,6 +27,12 @@ export const productsAPI = {
   },
   getCurrentProduct(category: string, productId: number) {
     return get(`products?category=${category}&id=${productId}`)
+  },
+  getCartProduct(cartId: string) {
+    return get(`products?id=${cartId}`)
+  },
+  getWishesProduct(wishId: string) {
+    return get(`products?id=${wishId}`)
   }
 }
 

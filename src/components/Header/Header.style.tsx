@@ -11,12 +11,12 @@ export const Desktop = styled.div`
     padding: 0;
 
   }
-    @media screen and (max-width: 576px) {
+  @media screen and (max-width: 576px) {
     display: none;
   }
 `
 
-export const UserLinks = styled.div`
+export const Links = styled.div`
   display: flex;
   flex-direction: row;
   width: 354px;
@@ -50,6 +50,7 @@ export const A = styled(NavLink)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  position: relative;
   padding: 0 25px;
   box-sizing: border-box;
   color: #fff;
@@ -57,10 +58,26 @@ export const A = styled(NavLink)`
   &:hover {
     background-color: rgba(70, 59, 124, 0.88);
   }
+
   @media screen and (max-width: 680px) {
     padding: 0 10px;
   }
   @media screen and (max-width: 576px) {
     width: 85px;
   }
+`
+
+export const Amount = styled.div`
+  position: absolute;
+  font-weight: bold;
+  //font-size: 14px;
+  bottom: 40px;
+  left: 40px;
+  background-color: brown;
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  padding: 1px;
+  box-sizing: border-box;
+  border-radius: 50%;
 `

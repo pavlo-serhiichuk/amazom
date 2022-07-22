@@ -1,7 +1,7 @@
 import React from 'react';
 import {Content, ProductsWrapper} from './Market.style'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
-import {MarketWrapper as Wrapper} from '../pages.style'
+import {ContentWrapper as Wrapper} from '../pages.style'
 
 const Market = () => {
   return (

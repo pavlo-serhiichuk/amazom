@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm, SubmitHandler} from 'react-hook-form';
-import {A, Form, Grid, Input, Label, Submit, Title, TitleWrapper} from '../SignUpForm/SignUpForm.style'
-import {NavLink, useNavigate} from 'react-router-dom'
+import {A, Form, Input, Label, Submit, Title, TitleWrapper} from '../SignUpForm/SignUpForm.style'
 import {RouteEnum} from '../../constants/routes'
 import {useActions} from '../../hooks/useActions'
+import {useTypedSelector} from '../../hooks/useTypedSelector'
 
 type FormValues = {
   email: string;
@@ -12,23 +12,27 @@ type FormValues = {
 
 export default function LoginFormComponent() {
   const {register, handleSubmit} = useForm<FormValues>();
+  const {error} = useTypedSelector(state => state.auth)
   const {login} = useActions()
-  const navigate = useNavigate()
+
   const onSubmit: SubmitHandler<FormValues> = data => {
     login(data.email, data.password)
-    console.log(data);
-    navigate('/')
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h3>Login your account:</h3>
-      <Grid>
-        <Label htmlFor="email">Email:</Label>
+      <Label>
+        Email:
         <Input type="email" {...register('email')} />
-        <Label htmlFor="email">Password:</Label>
+      </Label>
+      <Label>
+        Password:
         <Input {...register('password')} type="password" />
-      </Grid>
+      </Label>
+      {
+        error
+        && <div>The login or password was entered incorrectly</div>
+      }
       <Submit type="submit" />
       <TitleWrapper>
         <Title>

@@ -34,26 +34,6 @@ const Options = () => {
           to={RouteEnum.ARTICLES}
           url={optionImages.articles}
         />
-        <Option
-          title={'Get a vacation'}
-          to={RouteEnum.MARKET}
-          url={optionImages.vacation}
-        />
-        <Option
-          title={'Find your book'}
-          to={RouteEnum.MARKET}
-          url={optionImages.books}
-        />
-        <Option
-          title={'Start to play the guitar'}
-          to={RouteEnum.MARKET}
-          url={optionImages.guitars}
-        />
-        <Option
-          title={'Improve yourself'}
-          to={RouteEnum.ARTICLES}
-          url={optionImages.articles}
-        />
       </Content>
     </Wrapper>
   );
