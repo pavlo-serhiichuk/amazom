@@ -40,11 +40,15 @@ const productReducer = (state = initialState, action: ProductActionType) => {
 
 export const ProductActionCreators = {
   setProducts: (products: IProduct[]): SetProductsAction => ({type: ProductEnum.SET_PRODUCTS, payload: products}),
-  setCurrentProduct: (product: IProduct): SetCurrentProductAction => ({type: ProductEnum.SET_CURRENT_PRODUCT, payload: product}),
+  setCurrentProduct: (product: IProduct): SetCurrentProductAction => ({
+    type: ProductEnum.SET_CURRENT_PRODUCT,
+    payload: product
+  }),
   setCategory: (category: string): SetCategoryAction => ({type: ProductEnum.SET_CATEGORY, payload: category}),
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: ProductEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: ProductEnum.SET_ERROR, payload: error}),
   loadProducts: (category: string) => async (dispatch: AppDispatch) => {
+
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {
       try {

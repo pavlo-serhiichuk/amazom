@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm.component'
-import { AuthWrapper as Wrapper } from '../pages.style';
+import { AuthWrapper as Wrapper } from './Auth.style';
 
 const Login = () => {
   return (

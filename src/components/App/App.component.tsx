@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import Header from '../Header/Header.component'
-import {Wrapper} from './App.style'
 import AppRouter from '../AppRouter/AppRouter'
 import Confetti from 'react-confetti'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
@@ -15,7 +14,7 @@ function App() {
   }, [])
 
   return (
-    <Wrapper>
+    <>
       {
         isAuth
         && <Confetti
@@ -27,7 +26,7 @@ function App() {
       }
       <Header />
       <AppRouter />
-    </Wrapper>
+    </>
   );
 }
 

@@ -1,17 +1,15 @@
 import React from 'react';
-import {Content, ProductsWrapper} from './Market.style'
+import {Wrapper, Propositions} from './Market.style'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
-import {ContentWrapper as Wrapper} from '../pages.style'
+import {Carousel} from '../../components/Carousel/Carousel.component'
 
 const Market = () => {
   return (
     <Wrapper>
-      <Content>
-        <Sidebar />
-      <ProductsWrapper>
-        Market with different propositions and advertisment
-      </ProductsWrapper>
-      </Content>
+      <Sidebar />
+      <Propositions>
+        <Carousel />
+      </Propositions>
     </Wrapper>
   );
 };

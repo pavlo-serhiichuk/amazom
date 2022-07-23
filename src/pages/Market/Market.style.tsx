@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
-export const Content = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: left;
-  gap: 10px;
+  gap: 40px;
 `
-export const ProductsWrapper = styled.div`
+export const Propositions = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
