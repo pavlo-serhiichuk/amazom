@@ -3,13 +3,14 @@ import styled from 'styled-components'
 export const Form = styled.form`
   display: flex;
   align-items: center;
-  @media screen and (max-width: 992px) {display: none;}
-
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `
 
 export const Input = styled.input`
   font-size: 20px;
-  border-radius: 7px 0 0 7px;
+  border-radius: 7px 0 0 0;
   width: 560px;
   height: 50px;
   box-sizing: border-box;
