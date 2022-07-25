@@ -19,16 +19,24 @@ const Category = () => {
   }, [category])
 
   return (
+    <>
+      Filters
       <Content>
         <Sidebar />
         {
           isLoading
-          ? <Loader />
-          : <ProductsWrapper>
-          {products?.map((product: IProduct) => <CategoryProduct product={product} key={product.id} />)}
-        </ProductsWrapper>
+            ? <Loader />
+            : <ProductsWrapper>
+              {products?.map((product: IProduct) =>
+                <CategoryProduct
+                  product={product}
+                  key={product.id}
+                />
+              )}
+            </ProductsWrapper>
         }
       </Content>
+    </>
   );
 };
 

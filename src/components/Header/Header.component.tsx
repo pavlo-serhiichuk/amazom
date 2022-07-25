@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import {A, Desktop, Mobile, Links, Amount} from './Header.style'
 import {RouteEnum} from '../../constants/routes'
-import Search from '../Search/Search.component'
+import Search from '../SearchForm/SearchForm.component'
 import {FaUserAstronaut as UserIcon} from 'react-icons/fa'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {RiLoginBoxLine as LoginIcon} from 'react-icons/ri'

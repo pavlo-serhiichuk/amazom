@@ -5,7 +5,7 @@ import {Wrapper} from './Dropdown.style'
 const Dropdown = () => {
   return (
     <Wrapper>
-
+      Dropdown
     </Wrapper>
   );
 };

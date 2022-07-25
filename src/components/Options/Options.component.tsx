@@ -16,17 +16,17 @@ const Options = () => {
       <Content>
         <Option
           title={'Find your book'}
-          to={RouteEnum.MARKET}
+          to={RouteEnum.BOOKS}
           url={optionImages.books}
         />
         <Option
           title={'Start to play the guitar'}
-          to={RouteEnum.MARKET}
+          to={RouteEnum.GUITARS}
           url={optionImages.guitars}
         />
         <Option
           title={'Get a vacation'}
-          to={RouteEnum.MARKET}
+          to={RouteEnum.VOUCHERS}
           url={optionImages.vacation}
         />
         <Option

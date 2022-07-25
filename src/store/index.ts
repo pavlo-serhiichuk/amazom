@@ -5,13 +5,15 @@ import auth from './auth'
 import cart from './cart';
 import product from './product'
 import wishes from './wishes';
+import search from './search';
 
 const rootReducer = combineReducers({
   auth,
   product,
   article,
   cart,
-  wishes
+  wishes,
+  search
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))

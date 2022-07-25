@@ -1,31 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import useDebounce from '../../hooks/useDebounce'
 import {useActions} from '../../hooks/useActions'
-import {Button, Form, Input} from './Search.style'
+import {Button, Form, Input} from './SearchForm.style'
+import Dropdown from '../Dropdown/Dropdown.component'
 
 const Search = () => {
-  const [productName, setProductName] = useState('')
-  const debouncedSearch: any = useDebounce(search, 1000)
-  const {setProducts} = useActions()
+  const [productTitle, setProductTitle] = useState('')
+  const debouncedSearch: any = useDebounce(productTitle, search, 1000)
+  const {setSearch} = useActions()
+
   function search(query: string) {
-    fetch(`http://localhost:1122/products?q=${query}`)
+    fetch(`http://localhost:1122/products?title_like=${query}`)
       .then((data: any) => data.json())
       .then((json: any) => {
-        console.log(json)
-        setProducts(json)
+        // if (json.length > 0)
+        debugger
+        setSearch(json)
       })
   }
+
   useEffect(() => {
-    setProductName('')
+    setProductTitle('')
   }, [])
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
-    search(productName)
+    search(productTitle)
   }
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setProductName(e.target.value)
+    setProductTitle(e.target.value)
     if (e.target.value === '') {
       return false
     }
@@ -34,8 +38,9 @@ const Search = () => {
 
   return (
     <Form action="" onSubmit={handleSubmit}>
-      <Input value={productName} onChange={onChange} />
+      <Input value={productTitle} onChange={onChange} />
       <Button>Search</Button>
+      <Dropdown />
     </Form>
   );
 };

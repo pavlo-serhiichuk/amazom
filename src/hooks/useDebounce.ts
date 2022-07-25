@@ -1,6 +1,6 @@
 import {useCallback, useRef} from 'react'
 
-const useDebounce = (callback: any, delay: any) => {
+const useDebounce = (productTitle: string, callback: any, delay: any) => {
   const timer: any = useRef()
 
   const debouncedCallback = useCallback((...args: any) => {
@@ -9,7 +9,10 @@ const useDebounce = (callback: any, delay: any) => {
     }
 
     timer.current = setTimeout(() => {
-      callback(...args)
+      if (productTitle.length > 0) {
+        debugger
+        callback(...args)
+      }
     } , delay)
 
   }, [callback, delay])
