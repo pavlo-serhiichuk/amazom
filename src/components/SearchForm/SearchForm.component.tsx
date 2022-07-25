@@ -13,7 +13,6 @@ const Search = () => {
     fetch(`http://localhost:1122/products?title_like=${query}`)
       .then((data: any) => data.json())
       .then((json: any) => {
-        // if (json.length > 0)
         debugger
         setSearch(json)
       })
@@ -40,7 +39,7 @@ const Search = () => {
     <Form action="" onSubmit={handleSubmit}>
       <Input value={productTitle} onChange={onChange} />
       <Button>Search</Button>
-      <Dropdown />
+      {/*<Dropdown />*/}
     </Form>
   );
 };
