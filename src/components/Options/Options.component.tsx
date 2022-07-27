@@ -1,6 +1,6 @@
 import React from 'react';
 import Option from '../Option/Option.component'
-import {RouteEnum} from '../../constants/routes'
+import {RouteEnum} from '../../utils/routes'
 import {Content, Wrapper} from './Options.style'
 import Appear from '../Appear/Appear'
 

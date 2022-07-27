@@ -7,7 +7,7 @@ export enum RouteEnum {
   GUITARS = '/market/guitars',
   VOUCHERS = '/market/vouchers',
   CATEGORY = '/market/:category',
-  ARTICLE = '/article',
+  ARTICLE = '/article/:id',
   ARTICLES = '/articles',
   SIGNUP = '/signup',
   LOGIN = '/login',

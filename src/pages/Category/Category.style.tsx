@@ -8,7 +8,7 @@ export const Content = styled.div`
 export const ProductsWrapper = styled.div`
   width: 100%;
   display: flex;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 130px);
   flex-direction: row;
   flex-wrap: wrap;
   align-content: start;

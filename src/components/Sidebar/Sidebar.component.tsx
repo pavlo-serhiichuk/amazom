@@ -1,7 +1,7 @@
 import React from 'react';
 import {Wrapper} from './Sidebar.style'
 import {StyledLink} from '../StyledLink/StyledLink.component'
-import {RouteEnum} from '../../constants/routes'
+import {RouteEnum} from '../../utils/routes'
 
 const Sidebar = () => {
   return (

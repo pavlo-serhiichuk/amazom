@@ -8,8 +8,7 @@ import {
 } from './types'
 import {IUser} from '../../models/IUser'
 import {AppDispatch} from '../index'
-import axios from 'axios'
-import {serverURL} from '../../api/api'
+import {authAPI} from '../../api/api'
 
 const initialState: AuthState = {
   isAuth: false,
@@ -41,7 +40,7 @@ export const AuthActionCreators = {
   login: (email: string, password: string) => async (dispatch: AppDispatch) => {
     dispatch(AuthActionCreators.setLoading(true))
     try {
-      const response = await axios.post(`${serverURL}login`, {email, password})
+      const response = await authAPI.login(email, password)
       dispatch(AuthActionCreators.setUser(response.data.user))
       dispatch(AuthActionCreators.setAuth(true))
 
@@ -54,7 +53,8 @@ export const AuthActionCreators = {
   signUp: (firstName: string, lastName: string, email: string, password: string) => async (dispatch: AppDispatch) => {
     dispatch(AuthActionCreators.setLoading(true))
     try {
-      const response = await axios.post(`${serverURL}register`, {firstName, lastName, email, password})
+      const response = await authAPI.signUp(firstName, lastName, email, password)
+
       dispatch(AuthActionCreators.setUser(response.data.user))
       dispatch(AuthActionCreators.setAuth(true))
     } catch (e: any) {

@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import {A, Form, Input, Label, Submit, Title, TitleWrapper} from '../SignUpForm/SignUpForm.style'
-import {RouteEnum} from '../../constants/routes'
+import {RouteEnum} from '../../utils/routes'
 import {useActions} from '../../hooks/useActions'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 

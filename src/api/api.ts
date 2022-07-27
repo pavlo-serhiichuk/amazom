@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-export const serverURL = 'http://localhost:1122/'
+const serverURL = 'http://localhost:1122/'
+export const productsLimit = 12
 
-const get = async (url: string) => await axios.get(`${serverURL}${url}`, {
+const get = async (url: string, page: number = 1) => await axios.get(`${serverURL}${url}`, {
   params: {
-    _page: 1,
-      _limit: 12
+    _page: page,
+      _limit: productsLimit
   }
 })
 
@@ -16,14 +17,14 @@ export const authAPI = {
   login(email: string, password: string) {
     return post('signin', {email, password})
   },
-  signUp(username: string, email: string, password: string) {
-    return put('register', {username, email, password})
+  signUp(firstName: string, lastName: string, email: string, password: string) {
+    return put('register', {firstName, lastName, email, password})
   }
 }
 
 export const productsAPI = {
-  getProducts(category: string) {
-    return get(`products?category=${category}`)
+  getProducts(category: string, page: number = 1) {
+    return get(`products?category=${category}`, page)
   },
   getCurrentProduct(category: string, productId: number) {
     return get(`products?category=${category}&id=${productId}`)
@@ -36,8 +37,14 @@ export const productsAPI = {
   }
 }
 
+export const preorderAPI = {
+  getPreorderProducts(productsURL: string) {
+    return get(`products?id=${productsURL}`)
+  }
+}
+
 export const articlesAPI = {
-  getArticles() {
-    return get('articles')
+  getArticles(page: number = 1) {
+    return get('articles', page)
   }
 }

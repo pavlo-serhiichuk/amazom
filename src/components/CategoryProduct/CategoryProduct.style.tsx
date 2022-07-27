@@ -15,9 +15,9 @@ export const Wrapper = styled.div`
   padding: 10px;
   gap: 15px;
   box-shadow: 0 0 5px rgba(153, 153, 153, 0.38);
-
+  transition: all ease-in-out 200ms;
   &:hover {
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.88);
+    box-shadow: 0 0 8px rgba(153, 153, 153, 0.88);
   }
 `
 

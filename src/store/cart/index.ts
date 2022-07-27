@@ -1,8 +1,7 @@
 import {IProduct} from '../../models/IProduct'
 import {CartActionType, CartEnum, ICartState, SetCartAction} from './types'
 import {AppDispatch} from '../index'
-import {productsAPI, serverURL} from '../../api/api'
-import axios from 'axios'
+import {preorderAPI, productsAPI} from '../../api/api'
 
 const initialState: ICartState = {
   cart: [] as IProduct[],
@@ -21,9 +20,11 @@ export const CartActionCreators = {
   setCart: (cart: IProduct[]): SetCartAction => ({type: CartEnum.CART, payload: cart}),
   loadCart: () => async (dispatch: AppDispatch) => {
     const productsURL = localStorage.getItem('cart_ids')?.split(',').join('&id=')
-    const response = await axios.get(`${serverURL}products?id=${productsURL}`)
-    console.log(`${serverURL}products?id=${productsURL}`)
-    dispatch(CartActionCreators.setCart(response.data))
+
+    if (productsURL) {
+      const response = await preorderAPI.getPreorderProducts(productsURL)
+      dispatch(CartActionCreators.setCart(response.data))
+    }
   },
   addCartId: (id: number) => async (dispatch: AppDispatch) => {
     const cartId = (id).toString()
@@ -33,6 +34,7 @@ export const CartActionCreators = {
       if (cartIds.indexOf(cartId) >= 0) {
         return false
       }
+
       const newCardIds = `${cartIds},${cartId}`
       localStorage.setItem('cart_ids', `${newCardIds}`)
 

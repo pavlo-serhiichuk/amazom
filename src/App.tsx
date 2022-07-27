@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import Header from '../Header/Header.component'
-import AppRouter from '../AppRouter/AppRouter'
+import Header from './components/Header/Header.component'
+import AppRouter from './components/AppRouter/AppRouter'
 import Confetti from 'react-confetti'
-import {useTypedSelector} from '../../hooks/useTypedSelector'
-import {useActions} from '../../hooks/useActions'
+import {useTypedSelector} from './hooks/useTypedSelector'
+import {useActions} from './hooks/useActions'
 
 function App() {
   const {isAuth} = useTypedSelector(state => state.auth)

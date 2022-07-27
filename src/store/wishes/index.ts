@@ -1,6 +1,5 @@
 import {IProduct} from '../../models/IProduct'
-import {productsAPI, serverURL} from '../../api/api'
-import axios from 'axios'
+import {preorderAPI, productsAPI} from '../../api/api'
 import {ISetWishesActionType, IWishesState, WishesActionType, WishesEnum} from './types'
 import {AppDispatch} from '../index'
 
@@ -22,9 +21,11 @@ export const WishesActionCreators = {
   setWishes: (wishes: IProduct[]): ISetWishesActionType => ({type: WishesEnum.SET_WISHES, payload: wishes}),
   loadWishes: () => async (dispatch: AppDispatch) => {
     const productsURL = localStorage.getItem('wishes_ids')?.split(',').join('&id=')
-    const response = await axios.get(`${serverURL}products?id=${productsURL}`)
-    console.log(`${serverURL}products?id=${productsURL}`)
-    dispatch(WishesActionCreators.setWishes(response.data))
+
+    if (productsURL) {
+      const response = await preorderAPI.getPreorderProducts(productsURL)
+      dispatch(WishesActionCreators.setWishes(response.data))
+    }
   },
   addWishesId: (id: number) => async (dispatch: AppDispatch) => {
     const wishesId = (id).toString()
@@ -32,12 +33,13 @@ export const WishesActionCreators = {
 
     if (wishesIds) {
       if (wishesIds.indexOf(wishesId) >= 0) {
-        return false
+        return
       }
       const newCardIds = `${wishesIds},${wishesId}`
       localStorage.setItem('wishes_ids', `${newCardIds}`)
 
       const productsURL = newCardIds.split(',').join('&id=')
+
       const response = await productsAPI.getWishesProduct(productsURL)
       dispatch(WishesActionCreators.setWishes(response.data))
 
