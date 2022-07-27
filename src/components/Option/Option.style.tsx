@@ -19,10 +19,11 @@ export const Img = styled.div<ImgProps>`
     background-repeat: no-repeat;
     background-size: 900px;
     box-sizing: border-box;
-
+    transition: all ease-in-out 500ms;
     &:hover {
-        box-shadow: 0 0 5px #74a82b;
-    }
+        box-shadow: 0 0 5px #74a82b; 
+        width: 435px;
+   }
 `
 
 export const Title = styled.span`

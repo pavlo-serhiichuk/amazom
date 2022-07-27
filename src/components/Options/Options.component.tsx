@@ -19,28 +19,28 @@ const Options = () => {
   return (
     <Wrapper>
       <Content>
-        <Appear delay={randomNumber(500, 1000)}>
+        <Appear delay={randomNumber(700, 1100)}>
         <Option
           title={'Find your book'}
           to={RouteEnum.BOOKS}
           url={optionImages.books}
         />
         </Appear>
-        <Appear delay={randomNumber(500, 1000)}>
+        <Appear delay={randomNumber(700, 1000)}>
           <Option
             title={'Start to play the guitar'}
             to={RouteEnum.GUITARS}
             url={optionImages.guitars}
           />
         </Appear>
-        <Appear delay={randomNumber(500, 1000)}>
+        <Appear delay={randomNumber(700, 1000)}>
           <Option
             title={'Get a vacation'}
             to={RouteEnum.VOUCHERS}
             url={optionImages.vacation}
           />
         </Appear>
-        <Appear delay={randomNumber(500, 1000)}>
+        <Appear delay={randomNumber(700, 1100)}>
           <Option
             title={'Improve yourself'}
             to={RouteEnum.ARTICLES}

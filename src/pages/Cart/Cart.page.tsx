@@ -1,15 +1,16 @@
 import React from 'react';
-import {Title, Wrapper} from './Cart.style'
+import {Wrapper} from './Cart.style'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import CartProduct from '../../components/CartProduct/CartProduct.component'
+import {H2} from '../../components/Title/Title.style'
 
 const Cart = () => {
   const {cart: cartProducts} = useTypedSelector(state => state.cart)
   return (
       <Wrapper>
-        <Title>
+        <H2>
           Shopping Cart
-        </Title>
+        </H2>
         {cartProducts?.map(product =>
           <CartProduct
             cartProduct={product}
