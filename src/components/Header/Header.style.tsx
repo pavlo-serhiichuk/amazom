@@ -47,6 +47,7 @@ export const Mobile = styled.div`
 
 export const A = styled(NavLink)`
   display: flex;
+  min-width: 90px;
   flex-direction: row;
   align-items: center;
   justify-content: center;

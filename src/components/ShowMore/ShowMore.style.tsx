@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import {Wrapper} from '../CategoryProduct/CategoryProduct.style'
+import {Content} from '../CategoryProduct/CategoryProduct.style'
 
-export const ShowWrapper = styled(Wrapper)`
+export const ShowWrapper = styled(Content)`
   width: 250px;
   color: #494949;
   align-items: center;

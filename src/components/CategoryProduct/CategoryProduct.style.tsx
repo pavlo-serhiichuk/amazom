@@ -6,7 +6,7 @@ interface ImgProps {
   url: string
 }
 
-export const Wrapper = styled.div`
+export const Content = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.14);
   height: 250px;
   max-width: 500px;
@@ -22,6 +22,8 @@ export const Wrapper = styled.div`
 `
 
 export const Details = styled.div`
+  min-width: 190px;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 112px;
@@ -29,6 +31,9 @@ export const Details = styled.div`
 `
 
 export const Purchase = styled.div`
+  //position: absolute;
+  //bottom: -60px;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   width: 200px;
@@ -54,7 +59,6 @@ export const Title = styled(NavLink)`
   font-weight: bold;
   font-size: 20px;
   height: 90px;
-  overflow: hidden;
 `
 
 export const Img = styled(NavLink)<ImgProps>`

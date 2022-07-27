@@ -58,7 +58,7 @@ export const ProductActionCreators = {
       try {
         let response = await productsAPI.getProducts(category)
         dispatch(ProductActionCreators.setProducts(response.data))
-        dispatch(ProductActionCreators.setPages(Math.ceil(+response.headers["x-total-count"] / productsLimit)))
+        dispatch(ProductActionCreators.setPages(Math.ceil(+response.headers['x-total-count'] / productsLimit)))
       } catch (e: any) {
         dispatch(ProductActionCreators.setError(e.message))
       } finally {
@@ -67,6 +67,7 @@ export const ProductActionCreators = {
     }, 500)
   },
   showMore: (category: string, loadedProducts: IProduct[], page: number) => async (dispatch: AppDispatch) => {
+
     setTimeout(async () => {
       try {
         let response = await productsAPI.getProducts(category, page)
@@ -75,7 +76,6 @@ export const ProductActionCreators = {
 
       } catch (e: any) {
         dispatch(ProductActionCreators.setError(e.message))
-      } finally {
       }
     }, 600)
   },
