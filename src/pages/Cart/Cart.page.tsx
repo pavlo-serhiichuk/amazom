@@ -6,13 +6,12 @@ import {H2} from '../../components/Title/Title.style'
 import Delayed from '../../components/Delayed/Delayed'
 
 const Cart = () => {
-  const {cart: cartProducts} = useTypedSelector(state => state.cart)
+  const {cart} = useTypedSelector(state => state.cart)
+
   return (
       <Wrapper>
-        <H2>
-          Shopping Cart
-        </H2>
-        {cartProducts?.map((product, index) =>
+        <H2>Shopping Cart</H2>
+        {cart?.map((product, index) =>
           <Delayed waitBeforeShow={index * 100}>
             <CartProduct
               cartProduct={product}

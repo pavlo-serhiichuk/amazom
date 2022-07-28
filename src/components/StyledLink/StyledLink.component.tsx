@@ -12,7 +12,9 @@ export const StyledLink: FC<StyledLinkProps> = ({children, to, category}) => {
   const {setCategory} = useActions()
 
   const handleClick = () => {
-    return category ? setCategory(category) : null
+    return category
+      ? setCategory(category)
+      : null
   }
 
   return (

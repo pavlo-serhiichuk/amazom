@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {IProduct} from '../../models/IProduct'
-import {AddToWishes, Button, Content, Details, Img, Purchase, Title} from './CategoryProduct.style'
+import {AddToWishes, Button, Details, Img, Purchase, Title, Wrapper} from './CategoryProduct.style'
 import {useActions} from '../../hooks/useActions'
 
 interface ProductProps {
@@ -21,7 +21,7 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
 
   return (
     <>
-    <Content>
+    <Wrapper>
       <Img
         to={productPath}
         url={product.image[0]}
@@ -37,8 +37,7 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
           <AddToWishes onClick={handleWishesClick}/>
         </Purchase>
       </Details>
-    </Content>
-
+    </Wrapper>
     </>
 
   );

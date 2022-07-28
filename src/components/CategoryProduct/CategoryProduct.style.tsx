@@ -6,7 +6,7 @@ interface ImgProps {
   url: string
 }
 
-export const Content = styled.div`
+export const Wrapper = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.14);
   height: 250px;
   max-width: 500px;
@@ -31,8 +31,6 @@ export const Details = styled.div`
 `
 
 export const Purchase = styled.div`
-  //position: absolute;
-  //bottom: -60px;
   overflow: hidden;
   display: flex;
   justify-content: space-between;

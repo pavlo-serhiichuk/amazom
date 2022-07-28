@@ -4,7 +4,7 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
 import {IProduct} from '../../models/IProduct'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
-import {Content, ProductsWrapper} from './Category.style'
+import {ProductsWrapper, Wrapper, Content} from './Category.style'
 import Loader from '../../components/Loader/Loader.component'
 import {useParams} from 'react-router-dom'
 import Delayed from '../../components/Delayed/Delayed'
@@ -20,11 +20,11 @@ const Category = () => {
   }, [category])
 
   return (
-    <>
-      Filters
-      <Content>
+      <Wrapper>
         <Sidebar />
-        {
+        <Content>
+          Filters
+          {
           isLoading
             ? <Loader />
             : <ProductsWrapper>
@@ -39,8 +39,8 @@ const Category = () => {
               <Delayed waitBeforeShow={600}><ShowMore /></Delayed>
             </ProductsWrapper>
         }
-      </Content>
-    </>
+        </Content>
+      </Wrapper>
   );
 };
 
