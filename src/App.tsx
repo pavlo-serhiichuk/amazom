@@ -7,11 +7,16 @@ import {useActions} from './hooks/useActions'
 
 function App() {
   const {isAuth} = useTypedSelector(state => state.auth)
-  const {wishes} = useTypedSelector(state => state.wishes)
-  const {loadCart, loadWishes} = useActions()
+  const {loadCart, loadWishes, setWishesIds} = useActions()
   useEffect(() => {
     loadCart()
     loadWishes()
+
+    const localids = localStorage.getItem('wishes_ids')
+
+    if (localids) {
+      setWishesIds(localids?.split(',').filter(el => el !== '').map(Number))
+    }
   }, [])
 
   return (

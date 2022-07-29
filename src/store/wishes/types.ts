@@ -2,10 +2,13 @@ import {IProduct} from '../../models/IProduct'
 
 export enum WishesEnum {
   SET_WISHES = 'SET_WISHES',
+  SET_WISHES_IDs = 'SET_WISHES_IDs',
+
 }
 
 export interface IWishesState {
-  wishes: IProduct[]
+  wishes: IProduct[],
+  wishesIds: number[]
 }
 
 export interface ISetWishesActionType {
@@ -13,4 +16,11 @@ export interface ISetWishesActionType {
   payload: IProduct[]
 }
 
-export type WishesActionType = ISetWishesActionType
+export interface ISetWishesIdsActionType {
+  type: WishesEnum.SET_WISHES_IDs
+  payload: number[]
+}
+
+export type WishesActionType =
+  ISetWishesActionType
+  | ISetWishesIdsActionType
