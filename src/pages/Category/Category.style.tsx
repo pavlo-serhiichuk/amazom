@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
+export const Filters = styled.div`
+  height: 40px;
+  border-bottom: 1px solid lightgrey;
+
+  &:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
 `
 
 export const Content = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 `
 
 export const ProductsWrapper = styled.div`

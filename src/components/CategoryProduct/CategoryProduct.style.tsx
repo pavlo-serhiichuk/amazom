@@ -6,6 +6,10 @@ interface ImgProps {
   url: string
 }
 
+interface BtnProps {
+  isCartProduct?: boolean
+}
+
 export const Wrapper = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.14);
   height: 250px;
@@ -37,17 +41,19 @@ export const Purchase = styled.div`
   width: 200px;
   align-items: center;
   padding-top: 5px;
+  gap: 3px;
 `
 
-export const Button = styled.button`
-  background-color: #af09ff;
+export const Button = styled.button<BtnProps>`
+  background-color: ${({isCartProduct}) => isCartProduct ? '#af09ff': '#d57bff'};
   padding: 10px;
   color: beige;
-  width: 120px;
+  min-width: 130px;
+  height: 23px;
   text-align: center;
   cursor: pointer;
+  transition: all ease-in-out .3s;
 `
-
 export const AddToWishes = styled(LikedIcon)`
   padding: 10px 20px;
   cursor: pointer;

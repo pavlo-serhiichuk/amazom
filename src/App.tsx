@@ -7,6 +7,7 @@ import {useActions} from './hooks/useActions'
 
 function App() {
   const {isAuth} = useTypedSelector(state => state.auth)
+  const {wishes} = useTypedSelector(state => state.wishes)
   const {loadCart, loadWishes} = useActions()
   useEffect(() => {
     loadCart()

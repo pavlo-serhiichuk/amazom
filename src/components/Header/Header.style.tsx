@@ -55,7 +55,7 @@ export const A = styled(NavLink)`
   padding: 0 25px;
   box-sizing: border-box;
   color: #fff;
-
+  transition: all ease-in-out .2s;
   &:hover {
     background-color: rgba(70, 59, 124, 0.88);
   }

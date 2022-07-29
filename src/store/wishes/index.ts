@@ -48,5 +48,13 @@ export const WishesActionCreators = {
       const response = await productsAPI.getWishesProduct(wishesId)
       dispatch(WishesActionCreators.setWishes(response.data))
     }
+  },
+  deleteWishesId: (id: number) => async (dispatch: AppDispatch) => {
+      const wishesId = (id).toString()
+      const wishesIds = localStorage.getItem('wishes_ids')
+
+    if (wishesIds) {
+      localStorage.setItem('wishes_ids', wishesIds.replace(`${wishesId}`, '').split('').join())
+    }
   }
 }
