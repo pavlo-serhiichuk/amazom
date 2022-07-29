@@ -14,6 +14,7 @@ function App() {
     setWishesIds,
     setCartIds
   } = useActions()
+
   useEffect(() => {
     loadCart()
     loadWishes()

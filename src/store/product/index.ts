@@ -5,12 +5,12 @@ import {
   SetCategoryAction,
   SetCurrentProductAction,
   SetErrorAction,
-  SetLoadingAction, SetPagesAction,
+  SetLoadingAction, setTotalCountAction,
   SetProductsAction
 } from './types'
 import {IProduct} from '../../models/IProduct'
 import {AppDispatch} from '../index'
-import {productsAPI, productsLimit} from '../../api/api'
+import {productsAPI} from '../../api/api'
 
 
 const initialState: ProductState = {
@@ -19,7 +19,7 @@ const initialState: ProductState = {
   category: '',
   isLoading: false,
   error: null,
-  pages: 1,
+  totalCount: 0,
 }
 
 const productReducer = (state = initialState, action: ProductActionType) => {
@@ -34,8 +34,9 @@ const productReducer = (state = initialState, action: ProductActionType) => {
       return {...state, isLoading: action.payload}
     case ProductEnum.SET_ERROR:
       return {...state, error: action.payload}
-    case ProductEnum.SET_PAGES:
-      return {...state, pages: action.payload}
+    case ProductEnum.SET_TOTAL_COUNT:
+      console.log(action.payload)
+      return {...state, totalCount: action.payload}
     default:
       return {...state}
   }
@@ -50,15 +51,15 @@ export const ProductActionCreators = {
   setCategory: (category: string): SetCategoryAction => ({type: ProductEnum.SET_CATEGORY, payload: category}),
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: ProductEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: ProductEnum.SET_ERROR, payload: error}),
-  setPages: (pages: number): SetPagesAction => ({type: ProductEnum.SET_PAGES, payload: pages}),
+  setTotalCount: (totalCount: number): setTotalCountAction => ({type: ProductEnum.SET_TOTAL_COUNT, payload: totalCount}),
   loadProducts: (category: string) => async (dispatch: AppDispatch) => {
 
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {
       try {
         let response = await productsAPI.getProducts(category)
+        dispatch(ProductActionCreators.setTotalCount(+response.headers['x-total-count']))
         dispatch(ProductActionCreators.setProducts(response.data))
-        dispatch(ProductActionCreators.setPages(Math.ceil(+response.headers['x-total-count'] / productsLimit)))
       } catch (e: any) {
         dispatch(ProductActionCreators.setError(e.message))
       } finally {
@@ -66,8 +67,8 @@ export const ProductActionCreators = {
       }
     }, 500)
   },
-  showMore: (category: string, loadedProducts: IProduct[], page: number) => async (dispatch: AppDispatch) => {
 
+  showMore: (category: string, loadedProducts: IProduct[], page: number) => async (dispatch: AppDispatch) => {
     setTimeout(async () => {
       try {
         let response = await productsAPI.getProducts(category, page)
@@ -78,6 +79,7 @@ export const ProductActionCreators = {
       }
     }, 600)
   },
+
   loadCurrentProduct: (category: string, productId: number) => async (dispatch: AppDispatch) => {
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {

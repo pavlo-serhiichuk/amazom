@@ -4,11 +4,12 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
 import {IProduct} from '../../models/IProduct'
 import Sidebar from '../../components/Sidebar/Sidebar.component'
-import {ProductsWrapper, Content, Filters} from './Category.style'
+import {ProductsWrapper, Content} from './Category.style'
 import Loader from '../../components/Loader/Loader.component'
 import {useParams} from 'react-router-dom'
 import Delayed from '../../components/Delayed/Delayed'
 import ShowMore from '../../components/ShowMore/ShowMore.component'
+import Filters from '../../components/Filters/Filters.component'
 
 const Category = () => {
   const {loadProducts, setCategory} = useActions()
@@ -22,9 +23,7 @@ const Category = () => {
   return (
     <>
 
-      <Filters>
-
-      </Filters>
+      <Filters />
       <Content>
         <Sidebar />
         {

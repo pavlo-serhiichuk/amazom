@@ -3,9 +3,9 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
 import {ShowWrapper} from './ShowMore.style'
 
-const Pagination = () => {
+const ShowMore = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  const {pages, products, category} = useTypedSelector(state => state.product)
+  const {totalCount, products, category} = useTypedSelector(state => state.product)
   const {showMore} = useActions()
 
   const showMoreProducts = () => {
@@ -13,6 +13,7 @@ const Pagination = () => {
     showMore(category, products, currentPage + 1)
   }
 
+  const pages = Math.ceil(totalCount / 12)
   return (
     <>
       {pages > 1 && pages !== currentPage
@@ -24,4 +25,4 @@ const Pagination = () => {
   );
 };
 
-export default Pagination;
+export default ShowMore;

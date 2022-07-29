@@ -6,7 +6,7 @@ export interface ProductState {
   category: string
   isLoading: boolean
   error: string | null
-  pages: number
+  totalCount: number
 }
 
 export enum ProductEnum {
@@ -15,7 +15,7 @@ export enum ProductEnum {
   SET_CATEGORY = 'SET_CATEGORY',
   SET_LOADING = 'SET_LOADING',
   SET_ERROR = 'SET_ERROR',
-  SET_PAGES = 'SET_PAGES',
+  SET_TOTAL_COUNT = 'SET_TOTAL_COUNT',
 }
 
 export interface SetProductsAction {
@@ -43,8 +43,8 @@ export interface SetErrorAction {
   payload: string
 }
 
-export interface SetPagesAction {
-  type: ProductEnum.SET_PAGES
+export interface setTotalCountAction {
+  type: ProductEnum.SET_TOTAL_COUNT
   payload: number
 }
 
@@ -54,4 +54,4 @@ export type ProductActionType =
   | SetCategoryAction
   | SetLoadingAction
   | SetErrorAction
-  | SetPagesAction
+  | setTotalCountAction
