@@ -47,5 +47,13 @@ export const CartActionCreators = {
       const response = await productsAPI.getCartProduct(cartId)
       dispatch(CartActionCreators.setCart(response.data))
     }
+  },
+  deleteCartId: (id: number) => async (dispatch: AppDispatch) => {
+    const wishesId = (id).toString()
+    const wishesIds = localStorage.getItem('cart_ids')
+
+    if (wishesIds) {
+      localStorage.setItem('cart_ids', wishesIds.replace(`${wishesId}`, '').split(',').join())
+    }
   }
 }

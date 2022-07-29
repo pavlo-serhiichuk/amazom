@@ -8,7 +8,7 @@ interface ImgProps {
 
 export const Wrapper = styled.div`
   max-width: 1000px;
-  margin: 10px 150px;
+  margin: 10px 20px 0 150px;
   background-color: #fff;
   padding: 20px;
 `

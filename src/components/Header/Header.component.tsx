@@ -13,7 +13,8 @@ const iconSize = 35
 const Header = memo(() => {
   const {isAuth} = useTypedSelector(state => state.auth)
   const {cart} = useTypedSelector(state => state.cart)
-  const {wishes} = useTypedSelector(state => state.wishes)
+  const {wishes, wishesIds} = useTypedSelector(state => state.wishes)
+  console.log(wishesIds.length)
   return (
     <>
       <Desktop>
@@ -28,14 +29,14 @@ const Header = memo(() => {
             <CartIcon size={iconSize}/>
             {
               !!cart.length
-              && <Amount>{cart.length }</Amount>
+              && <Amount>{cart.length}</Amount>
             }
           </A>
           <A to={RouteEnum.WISHES}>
             <WishesIcon size={30} />
             {
-              !!wishes.length
-              && <Amount>{wishes.length }</Amount>
+              !!wishesIds.length
+              && <Amount>{wishesIds.length }</Amount>
             }
 
           </A>

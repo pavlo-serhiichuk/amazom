@@ -2,7 +2,6 @@ import React, {FC, useEffect, useState} from 'react';
 import {IProduct} from '../../models/IProduct'
 import {AddToWishes, Button, Details, Img, Purchase, Title, Wrapper} from './CategoryProduct.style'
 import {useActions} from '../../hooks/useActions'
-import {useTypedSelector} from '../../hooks/useTypedSelector'
 
 interface ProductProps {
   product: IProduct
@@ -11,21 +10,27 @@ interface ProductProps {
 const CategoryProduct: FC<ProductProps> = ({product}) => {
   const [isCartProduct, setIsCartProduct] = useState(false)
   const [isWishesProduct, setIsWishesProduct] = useState(false)
-  const {addCartId, addWishesId, deleteWishesId, loadWishes} = useActions()
+  const {addCartId, addWishesId, deleteWishesId, deleteCartId} = useActions()
 
   useEffect(() => {
-      if (localStorage.getItem('cart_ids')?.split(',').find(cartId => +cartId === product.id)) {
-        setIsCartProduct(true)
-      }
-      if (localStorage.getItem('wishes_ids')?.split(',').find(wishesId => +wishesId === product.id)) {
-        setIsWishesProduct(true)
-      }
+    if (localStorage.getItem('cart_ids')?.split(',').find(cartId => +cartId === product.id)) {
+      setIsCartProduct(true)
+    }
+    if (localStorage.getItem('wishes_ids')?.split(',').find(wishesId => +wishesId === product.id)) {
+      setIsWishesProduct(true)
+    }
   })
 
   const productPath = `/market/${product.category}/${product.id}`
+
   const addToCart = () => {
     addCartId(product.id)
   }
+  const deleteFromCart = () => {
+    deleteCartId(product.id)
+    setIsCartProduct(false)
+  }
+
 
   const addToWishes = () => {
     addWishesId(product.id)
@@ -37,7 +42,6 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
   }
 
   return (
-    <>
       <Wrapper>
         <Img
           to={productPath}
@@ -50,23 +54,36 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
           <Purchase>
             {
               isCartProduct
-              ? <Button disabled>
+                ? <Button
+                  onClick={deleteFromCart}
+                >
                   Added
                 </Button>
-              : <Button onClick={addToCart} isCartProduct>
+                : <Button
+                  onClick={addToCart}
+                  isCartProduct
+                >
                   Add To Cart
                 </Button>
             }
             {
               isWishesProduct
-              ? <AddToWishes size={60} onClick={deleteFromWishes} style={{transition: 'all ease-in-out .3s', backgroundColor: 'lightseagreen', height: '23px',  padding: '10px' }} />
-              : <AddToWishes size={60} onClick={addToWishes} style={{transition: 'all ease-in-out .3s', backgroundColor: '#9a99', height: '23px', padding: '10px'}}/>
+                ? <AddToWishes size={60} onClick={deleteFromWishes} style={{
+                  transition: 'all ease-in-out .3s',
+                  backgroundColor: 'lightseagreen',
+                  height: '23px',
+                  padding: '10px'
+                }} />
+                : <AddToWishes size={60} onClick={addToWishes} style={{
+                  transition: 'all ease-in-out .3s',
+                  backgroundColor: '#9a99',
+                  height: '23px',
+                  padding: '10px'
+                }} />
             }
           </Purchase>
         </Details>
       </Wrapper>
-    </>
-
   );
 };
 
