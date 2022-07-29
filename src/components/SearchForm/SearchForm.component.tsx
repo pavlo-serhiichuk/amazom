@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import useDebounce from '../../hooks/useDebounce'
 import {useActions} from '../../hooks/useActions'
 import {Button, Form, Input} from './SearchForm.style'
 import Dropdown from '../Dropdown/Dropdown.component'
 
-const Search = () => {
+const Search = memo(() => {
   const [productTitle, setProductTitle] = useState('')
   const debouncedSearch: any = useDebounce(productTitle, search, 1000)
   const {setSearch} = useActions()
@@ -42,6 +42,6 @@ const Search = () => {
       {/*<Dropdown />*/}
     </Form>
   );
-};
+});
 
 export default Search;

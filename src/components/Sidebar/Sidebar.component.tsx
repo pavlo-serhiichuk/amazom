@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Wrapper} from './Sidebar.style'
 import {StyledLink} from '../StyledLink/StyledLink.component'
 import {RouteEnum} from '../../utils/routes'
 
-const Sidebar = () => {
+const Sidebar = memo(() => {
   return (
     <Wrapper>
         <StyledLink to={RouteEnum.BOOKS} category="books">Books</StyledLink>
@@ -11,6 +11,6 @@ const Sidebar = () => {
         <StyledLink to={RouteEnum.VOUCHERS} category="vouchers">Vouchers</StyledLink>
     </Wrapper>
   );
-};
+})
 
 export default Sidebar;

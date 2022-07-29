@@ -71,7 +71,6 @@ export const ProductActionCreators = {
     setTimeout(async () => {
       try {
         let response = await productsAPI.getProducts(category, page)
-        console.log([...loadedProducts, response.data])
         dispatch(ProductActionCreators.setProducts([...loadedProducts, ...response.data]))
 
       } catch (e: any) {

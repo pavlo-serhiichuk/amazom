@@ -17,7 +17,6 @@ export default function SignUpForm() {
   const navigate = useNavigate()
   const onSubmit: SubmitHandler<FormValues> = data => {
     signUp(data.firstName, data.lastName, data.email, data.password)
-    console.log(data);
     navigate('/')
   }
 

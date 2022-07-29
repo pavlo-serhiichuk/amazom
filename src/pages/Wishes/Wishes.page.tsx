@@ -22,10 +22,10 @@ const Wishes = () => {
             wishes?.map((product, index) =>
               <Delayed
                 waitBeforeShow={index * 100}
+                key={product.id}
               >
                 <WishesProduct
                   preorderProduct={product}
-                  key={product.id}
                 />
               </Delayed>
             )

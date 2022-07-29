@@ -9,7 +9,6 @@ const Product = () => {
   const {loadCurrentProduct} = useActions()
   const params: any = useParams()
   useEffect(() => {
-    console.log('params: ', params)
     loadCurrentProduct(params.category, params.id)
   }, [])
 
