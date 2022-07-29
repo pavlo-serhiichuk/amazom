@@ -28,18 +28,12 @@ export const productsAPI = {
   },
   getCurrentProduct(category: string, productId: number) {
     return get(`products?category=${category}&id=${productId}`)
-  },
-  getCartProduct(cartId: string) {
-    return get(`products?id=${cartId}`)
-  },
-  getWishesProduct(wishId: string) {
-    return get(`products?id=${wishId}`)
   }
 }
 
 export const preorderAPI = {
-  getPreorderProducts(productsURL: string) {
-    return get(`products?id=${productsURL}`)
+  getPreorderProducts(productsIds: string) {
+    return get(`products?id=${productsIds}`)
   }
 }
 
@@ -48,3 +42,6 @@ export const articlesAPI = {
     return get('articles', page)
   }
 }
+
+export const getLocalStorageIds = (key: string) => localStorage.getItem(key)
+export const setLocalStorageIds = (key: string, value: string) => localStorage.setItem(key, value)

@@ -1,7 +1,7 @@
 import {IProduct} from '../../models/IProduct'
 import {CartActionType, CartEnum, ICartState, SetCartAction} from './types'
 import {AppDispatch} from '../index'
-import {preorderAPI, productsAPI} from '../../api/api'
+import {preorderAPI} from '../../api/api'
 
 const initialState: ICartState = {
   cart: [] as IProduct[],
@@ -39,12 +39,12 @@ export const CartActionCreators = {
       localStorage.setItem('cart_ids', `${newCardIds}`)
 
       const productsURL = newCardIds.split(',').join('&id=')
-      const response = await productsAPI.getCartProduct(productsURL)
+      const response = await preorderAPI.getPreorderProducts(productsURL)
       dispatch(CartActionCreators.setCart(response.data))
 
     } else {
       localStorage.setItem('cart_ids', cartId)
-      const response = await productsAPI.getCartProduct(cartId)
+      const response = await preorderAPI.getPreorderProducts(cartId)
       dispatch(CartActionCreators.setCart(response.data))
     }
   },

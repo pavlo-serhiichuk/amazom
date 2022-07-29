@@ -3,12 +3,13 @@ import {IProduct} from '../../models/IProduct'
 export enum WishesEnum {
   SET_WISHES = 'SET_WISHES',
   SET_WISHES_IDs = 'SET_WISHES_IDs',
-
+  SET_ERROR = 'SET_ERROR'
 }
 
 export interface IWishesState {
   wishes: IProduct[],
-  wishesIds: number[]
+  wishesIds: number[],
+  error: string
 }
 
 export interface ISetWishesActionType {
@@ -21,6 +22,12 @@ export interface ISetWishesIdsActionType {
   payload: number[]
 }
 
+export interface ISetWishesErrorActionType {
+  type: WishesEnum.SET_ERROR
+  payload: string
+}
+
 export type WishesActionType =
   ISetWishesActionType
   | ISetWishesIdsActionType
+  | ISetWishesErrorActionType
