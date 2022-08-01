@@ -1,7 +1,6 @@
 import React from 'react';
 import SimpleImageSlider from 'react-simple-image-slider'
 import Options from '../../components/Options/Options.component'
-import {H2} from '../../components/Title/Title.style'
 
 const sliderImages = [
   {url: 'https://m.media-amazon.com/images/I/61DUO0NqyyL._SX3000_.jpg'},

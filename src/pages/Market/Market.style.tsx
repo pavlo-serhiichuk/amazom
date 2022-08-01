@@ -7,8 +7,9 @@ export const Wrapper = styled.div`
   gap: 40px;
 `
 export const Propositions = styled.div`
+  width: 70%;
   //display: flex;
   //flex-wrap: wrap;
-  //flex-direction: row;
+  //flex-direction: column;
   //gap: 10px;
 `

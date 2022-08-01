@@ -1,7 +1,7 @@
 import React from 'react';
 import {Content, Products, Wrapper} from '../Cart/Cart.style'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
-import {H2} from '../../components/Title/Title.style'
+import {SubTitle} from '../../components/Title/Title.style'
 import {
   PreorderProduct as WishesProduct
 } from '../../components/PreorderProduct/PreorderProduct.component'
@@ -13,9 +13,9 @@ const Wishes = () => {
 
   return (
     <Wrapper bgc={'#ebffba'}>
-      <H2>
+      <SubTitle>
         Wishes
-      </H2>
+      </SubTitle>
       <Content>
         <Products>
           {

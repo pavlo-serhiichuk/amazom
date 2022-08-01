@@ -13,9 +13,8 @@ export const Img = styled.div<ImgProps>`
     width: 415px;
     height: 720px;
     padding: 10px;
-    position: relative; 
     background-image: url(${({url}) => url});
-    background-position: left;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: 900px;
     box-sizing: border-box;
