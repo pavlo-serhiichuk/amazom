@@ -11,7 +11,7 @@ export const SubTitle = styled.h2`
   background-color: #fff;
   padding: 20px 150px;
 `
-export const H4 = styled.h4`
+export const MiddleTitle = styled.h4`
   margin: 0;
 `
 

@@ -31,7 +31,10 @@ const Wishes = () => {
             )
           }
         </Products>
-        <PreorderCheck />
+        <PreorderCheck
+          price={200}
+          totalAmount={wishes.length}
+        />
       </Content>
     </Wrapper>
   );

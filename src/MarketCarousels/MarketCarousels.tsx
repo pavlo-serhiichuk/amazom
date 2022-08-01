@@ -3,7 +3,7 @@ import {IProduct} from '../models/IProduct'
 import Carousel from '../components/Carousel/Carousel.component'
 import {productsAPI} from '../api/api'
 import Loader from '../components/Loader/Loader.component'
-import {H4} from '../components/Title/Title.style'
+import {MiddleTitle} from '../components/Title/Title.style'
 
 const MarketCarousels = () => {
   const [books, setBooks] = useState<IProduct[]>()
@@ -32,12 +32,20 @@ const MarketCarousels = () => {
 
   return (
     <>
-      <H4>Books:</H4>
-      <Carousel products={books} />
-      <H4>Guitars:</H4>
-      <Carousel products={guitars} />
-      <H4>Vouchers:</H4>
-      <Carousel products={vouchers} />
+      <MiddleTitle>Bestsellers:</MiddleTitle>
+      <Carousel
+        products={books}
+        autoplaySpeed={1000}
+      />
+      <MiddleTitle>Popular guitars:</MiddleTitle>
+      <Carousel
+        products={guitars}
+        autoplaySpeed={3000}
+      />
+      <MiddleTitle>Crowded hotels:</MiddleTitle>
+      <Carousel
+        products={vouchers}
+      />
     </>
   );
 };

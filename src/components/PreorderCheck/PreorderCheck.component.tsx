@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Wrapper} from './PreorderCheck.style'
 
-const PreorderCheck = () => {
+
+interface PreorderProps {
+  price: number
+  totalAmount: number
+}
+
+const PreorderCheck: FC<PreorderProps> = ({price, totalAmount}) => {
   return (
     <Wrapper>
-      PreorderCheck
+      Subtotal ({totalAmount} items): ${price}
+      <br/>
+      <button>Proceed to checkout</button>
     </Wrapper>
   );
 };

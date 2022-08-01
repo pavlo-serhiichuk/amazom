@@ -14,13 +14,12 @@ function App() {
     setWishesIds,
     setCartIds
   } = useActions()
+  const localWishesIds = getLocalStorageIds('wishes_ids')
+  const localCartIds = getLocalStorageIds('wishes_ids')
 
   useEffect(() => {
     loadCart()
     loadWishes()
-
-    const localWishesIds = getLocalStorageIds('wishes_ids')
-    const localCartIds = getLocalStorageIds('wishes_ids')
 
     if (localWishesIds) {
       setWishesIds(localWishesIds?.split(',').filter(el => el !== '').map(Number))

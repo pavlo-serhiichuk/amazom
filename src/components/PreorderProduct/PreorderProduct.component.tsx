@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Wrapper, Content, TitleContent, Img, Info} from './PreorderProduct.style'
 import {IProduct} from '../../models/IProduct'
-import {Caption, H4} from '../Title/Title.style'
+import {Caption, MiddleTitle} from '../Title/Title.style'
 
 interface CartProductProps {
   preorderProduct: IProduct
@@ -11,9 +11,9 @@ export const PreorderProduct: FC<CartProductProps> = ({preorderProduct}) => {
   return (
     <Wrapper>
       <TitleContent>
-        <H4>
+        <MiddleTitle>
           {preorderProduct.title}
-        </H4>
+        </MiddleTitle>
         <Caption>
           Price
         </Caption>

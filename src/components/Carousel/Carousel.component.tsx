@@ -5,15 +5,18 @@ import {Img, Wrapper} from './Carousel.style'
 
 interface CarouselProps {
   products?: IProduct[]
+  autoplaySpeed?: number
 }
 
-const Carousel: FC<CarouselProps> = ({products}) => {
+const Carousel: FC<CarouselProps> = ({products, autoplaySpeed = 2000}) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 6,
-    slidesToScroll: 2
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: autoplaySpeed,
   };
 
   return (

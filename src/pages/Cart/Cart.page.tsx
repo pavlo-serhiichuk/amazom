@@ -28,7 +28,10 @@ const Cart = () => {
             )
           }
         </Products>
-        <PreorderCheck />
+        <PreorderCheck
+          price={200}
+          totalAmount={cart.length}
+        />
       </Content>
     </Wrapper>
   );

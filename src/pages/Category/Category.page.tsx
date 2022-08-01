@@ -9,7 +9,7 @@ import Loader from '../../components/Loader/Loader.component'
 import {useParams} from 'react-router-dom'
 import Delayed from '../../components/Delayed/Delayed'
 import ShowMore from '../../components/ShowMore/ShowMore.component'
-import Filters from '../../components/Filters/Filters.component'
+import Filters from '../../components/Filter/Filter.component'
 
 const Category = () => {
   const {loadProducts, setCategory} = useActions()

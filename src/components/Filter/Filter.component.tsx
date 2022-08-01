@@ -1,15 +1,16 @@
 import React from 'react';
-import {Wrapper} from './Filters.style'
+import {Wrapper} from './Filter.style'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
+import FilterForm from './FilterForm/FilterForm.component'
 
 const Filters = () => {
   const {totalCount, products, category} = useTypedSelector(state => state.product)
-  console.log(totalCount)
   return (
     <Wrapper>
-      <>
-        {`1-${products.length} of ${totalCount} ${category}`}
-      </>
+        <span>
+          {`1-${products.length} of ${totalCount} ${category}`}
+        </span>
+        <FilterForm />
     </Wrapper>
   );
 };

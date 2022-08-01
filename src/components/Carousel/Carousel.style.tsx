@@ -6,7 +6,7 @@ interface ImgProps {
 }
 
 export const Wrapper = styled.div`
-  border-left: 1px solid red;
+  border-left: 1px solid lightgray;
   margin: 10px 0 40px 5px;
   padding: 0 15px;
 `
