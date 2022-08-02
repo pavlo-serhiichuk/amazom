@@ -99,6 +99,7 @@ export const CartActionCreators = {
           .replace(`${cartId}`, '')
           .split(',').filter(el => el !== '')
           .map(Number)
+
         dispatch(CartActionCreators.setCartIds(newCartIds))
         setLocalStorageIds('cart_ids', newCartIds.toString())
       }

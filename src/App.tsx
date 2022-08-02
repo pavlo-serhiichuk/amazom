@@ -16,17 +16,18 @@ function App() {
     setWishesIds,
     setCartIds
   } = useActions()
-  const localWishesIds = getLocalStorageIds('wishes_ids')
-  const localCartIds = getLocalStorageIds('cart_ids')
+
+  const localWishesIds = getLocalStorageIds('wishes_ids')?.split(',').filter(el => el !== '').map(Number)
+  const localCartIds = getLocalStorageIds('cart_ids')?.split(',').filter(el => el !== '').map(Number)
 
   useEffect(() => {
 
     if (localWishesIds) {
-      setWishesIds(localWishesIds?.split(',').filter(el => el !== '').map(Number))
+      setWishesIds(localWishesIds)
     }
 
     if (localCartIds) {
-      setCartIds(localCartIds?.split(',').filter(el => el !== '').map(Number))
+      setCartIds(localCartIds)
     }
   }, [])
 
