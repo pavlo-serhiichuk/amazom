@@ -44,9 +44,9 @@ export const WishesActionCreators = {
     type: WishesEnum.SET_WISHES_ERROR,
     payload: error
   }),
-  setWishesIds: (wishesIds: number[]): ISetWishesIdsActionType => ({
+  setWishesIds: (wishesIds: string): ISetWishesIdsActionType => ({
     type: WishesEnum.SET_WISHES_IDs,
-    payload: wishesIds
+    payload: wishesIds.split(',').filter(el => el !== '').map(Number)
   }),
 
   loadWishes: () => async (dispatch: AppDispatch) => {
@@ -74,13 +74,13 @@ export const WishesActionCreators = {
 
         const response = await preorderAPI.getPreorderProducts(newWishesIds.split(',').join('&id='))
         dispatch(WishesActionCreators.setWishes(response.data))
-        dispatch(WishesActionCreators.setWishesIds(newWishesIds.split(',').filter(el => el !== '').map(Number)))
+        dispatch(WishesActionCreators.setWishesIds(newWishesIds))
         setLocalStorageIds('wishes_ids', newWishesIds)
 
       } else {
         const response = await preorderAPI.getPreorderProducts(wishesId)
         dispatch(WishesActionCreators.setWishes(response.data))
-        dispatch(WishesActionCreators.setWishesIds([id]))
+        dispatch(WishesActionCreators.setWishesIds(wishesId))
         setLocalStorageIds('wishes_ids', wishesId)
       }
 
@@ -95,10 +95,7 @@ export const WishesActionCreators = {
       const wishesIds = getLocalStorageIds('wishes_ids')
 
       if (wishesIds) {
-        const newWishesIds = wishesIds
-          .replace(`${wishesId}`, '')
-          .split(',').filter(el => el !== '')
-          .map(Number)
+        const newWishesIds = wishesIds.replace(`${wishesId}`, '')
 
         dispatch(WishesActionCreators.setWishesIds(newWishesIds))
         setLocalStorageIds('wishes_ids', newWishesIds.toString())
@@ -107,5 +104,4 @@ export const WishesActionCreators = {
       dispatch(WishesActionCreators.setError(e.message))
     }
   }
-
 }

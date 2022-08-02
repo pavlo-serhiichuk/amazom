@@ -17,7 +17,7 @@ function App() {
     setCartIds
   } = useActions()
 
-  const localWishesIds = getLocalStorageIds('wishes_ids')?.split(',').filter(el => el !== '').map(Number)
+  const localWishesIds = getLocalStorageIds('wishes_ids')
   const localCartIds = getLocalStorageIds('cart_ids')?.split(',').filter(el => el !== '').map(Number)
 
   useEffect(() => {
