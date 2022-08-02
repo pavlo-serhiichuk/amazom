@@ -76,7 +76,6 @@ export const WishesActionCreators = {
         dispatch(WishesActionCreators.setWishes(response.data))
         dispatch(WishesActionCreators.setWishesIds(newWishesIds))
         setLocalStorageIds('wishes_ids', newWishesIds)
-
       } else {
         const response = await preorderAPI.getPreorderProducts(wishesId)
         dispatch(WishesActionCreators.setWishes(response.data))

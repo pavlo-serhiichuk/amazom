@@ -21,11 +21,9 @@ function App() {
   const localCartIds = getLocalStorageIds('cart_ids')
 
   useEffect(() => {
-
     if (localWishesIds) {
       setWishesIds(localWishesIds)
     }
-
     if (localCartIds) {
       setCartIds(localCartIds)
     }
@@ -33,11 +31,8 @@ function App() {
 
   useEffect(() => {
     loadWishes()
-  }, [wishesIds])
-
-  useEffect(() => {
     loadCart()
-  }, [cartIds])
+  }, [wishesIds, cartIds])
 
   return (
     <>

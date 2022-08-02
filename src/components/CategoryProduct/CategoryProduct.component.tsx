@@ -11,18 +11,21 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
   const [isCartProduct, setIsCartProduct] = useState(false)
   const [isWishesProduct, setIsWishesProduct] = useState(false)
   const {addCartId, addWishesId, deleteWishesId, deleteCartId} = useActions()
+  const productPath = `/market/${product.category}/${product.id}`
 
   useEffect(() => {
-    if (localStorage.getItem('cart_ids')?.split(',').find(cartId => +cartId === product.id)) {
+    if (checkIds('cart_ids')) {
       setIsCartProduct(true)
     }
-    if (localStorage.getItem('wishes_ids')?.split(',').find(wishesId => +wishesId === product.id)) {
+
+    if (checkIds('wishes_ids')) {
       setIsWishesProduct(true)
     }
   })
 
-  const productPath = `/market/${product.category}/${product.id}`
-
+  function checkIds (key: string) {
+    return localStorage.getItem(key)?.split(',').find(cartId => +cartId === product.id)
+  }
   const addToCart = () => {
     addCartId(product.id)
   }
@@ -30,12 +33,9 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
     deleteCartId(product.id)
     setIsCartProduct(false)
   }
-
-
   const addToWishes = () => {
     addWishesId(product.id)
   }
-
   const deleteFromWishes = () => {
     deleteWishesId(product.id)
     setIsWishesProduct(false)
@@ -72,18 +72,8 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
             }
             {
               isWishesProduct
-                ? <AddToWishes size={60} onClick={deleteFromWishes} style={{
-                  transition: 'all ease-in-out .3s',
-                  backgroundColor: 'lightseagreen',
-                  height: '23px',
-                  padding: '10px'
-                }} />
-                : <AddToWishes size={60} onClick={addToWishes} style={{
-                  transition: 'all ease-in-out .3s',
-                  backgroundColor: '#9a99',
-                  height: '23px',
-                  padding: '10px'
-                }} />
+                ? <AddToWishes size={60} onClick={deleteFromWishes} bgc={ 'lightseagreen'} />
+                : <AddToWishes size={60} onClick={addToWishes} bgc={'#9a99'} />
             }
           </Purchase>
         </Details>

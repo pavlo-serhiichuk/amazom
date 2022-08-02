@@ -10,6 +10,10 @@ interface BtnProps {
   isCartProduct?: boolean
 }
 
+interface AddToWishesProps {
+  bgc: string
+}
+
 export const Wrapper = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.14);
   height: 250px;
@@ -59,9 +63,16 @@ export const Button = styled.button<BtnProps>`
   cursor: pointer;
   transition: all ease-in-out .3s;
 `
-export const AddToWishes = styled(LikedIcon)`
+
+//'#9a99'
+
+export const AddToWishes = styled(LikedIcon)<AddToWishesProps>`
   padding: 10px 20px;
   cursor: pointer;
+  transition: all ease-in-out .3s;
+  background-color: ${({bgc}) => bgc};
+  height: 23px;
+  padding: 10px;
 `
 
 export const Price = styled.div`
