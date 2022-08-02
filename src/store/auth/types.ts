@@ -1,6 +1,6 @@
 import {IUser} from '../../models/IUser'
 
-export interface AuthState {
+export interface IAuthState {
   user: IUser
   isAuth: boolean
   isLoading: boolean

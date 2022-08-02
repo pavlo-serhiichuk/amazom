@@ -2,7 +2,8 @@ import {IProduct} from '../../models/IProduct'
 import {
   getLocalStorageIds,
   preorderAPI,
-  setLocalStorageIds} from '../../api/api'
+  setLocalStorageIds
+} from '../../api/api'
 import {
   ISetWishesActionType,
   ISetWishesErrorActionType,
@@ -19,7 +20,7 @@ const initialState: IWishesState = {
   error: ''
 }
 
-export default function wishesReducer(
+export default function wishesReducer (
   state = initialState,
   action: WishesActionType
 ) {
@@ -71,7 +72,6 @@ export const WishesActionCreators = {
 
       if (wishesIds) {
         const newWishesIds = `${wishesIds},${wishesId}`
-
         const response = await preorderAPI.getPreorderProducts(newWishesIds.split(',').join('&id='))
         dispatch(WishesActionCreators.setWishes(response.data))
         dispatch(WishesActionCreators.setWishesIds(newWishesIds))
@@ -95,7 +95,6 @@ export const WishesActionCreators = {
 
       if (wishesIds) {
         const newWishesIds = wishesIds.replace(`${wishesId}`, '')
-
         dispatch(WishesActionCreators.setWishesIds(newWishesIds))
         setLocalStorageIds('wishes_ids', newWishesIds.toString())
       }

@@ -6,7 +6,10 @@ const initialState: ISearchState = {
   searchProducts: [] as IProduct[],
 }
 
-export default function searchReducer(state = initialState, action: SearchActionType) {
+export default function searchReducer(
+  state = initialState,
+  action: SearchActionType
+) {
   switch (action.type) {
     case SearchEnum.SET_SEARCH:
       debugger
@@ -17,5 +20,8 @@ export default function searchReducer(state = initialState, action: SearchAction
 }
 
 export const SearchActionCreators = {
-  setSearch: (searchProducts: IProduct[]): ISetSearchActionType => ({type: SearchEnum.SET_SEARCH, payload: searchProducts}),
+  setSearch: (searchProducts: IProduct[]): ISetSearchActionType => ({
+    type: SearchEnum.SET_SEARCH,
+    payload: searchProducts
+  }),
 }

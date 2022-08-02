@@ -22,7 +22,10 @@ const initialState: ProductState = {
   totalCount: 0,
 }
 
-const productReducer = (state = initialState, action: ProductActionType) => {
+export default function productReducer (
+  state = initialState,
+  action: ProductActionType)
+{
   switch (action.type) {
     case ProductEnum.SET_PRODUCTS:
       return {...state, products: action.payload}
@@ -52,8 +55,9 @@ export const ProductActionCreators = {
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: ProductEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: ProductEnum.SET_ERROR, payload: error}),
   setTotalCount: (totalCount: number): setTotalCountAction => ({type: ProductEnum.SET_TOTAL_COUNT, payload: totalCount}),
-  loadProducts: (category: string) => async (dispatch: AppDispatch) => {
-
+  loadProducts: (
+    category: string
+  ) => async (dispatch: AppDispatch) => {
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {
       try {
@@ -68,7 +72,11 @@ export const ProductActionCreators = {
     }, 500)
   },
 
-  showMore: (category: string, loadedProducts: IProduct[], page: number) => async (dispatch: AppDispatch) => {
+  showMore: (
+    category: string,
+    loadedProducts: IProduct[],
+    page: number
+  ) => async (dispatch: AppDispatch) => {
     setTimeout(async () => {
       try {
         let response = await productsAPI.getProducts(category, page)
@@ -80,7 +88,10 @@ export const ProductActionCreators = {
     }, 600)
   },
 
-  loadCurrentProduct: (category: string, productId: number) => async (dispatch: AppDispatch) => {
+  loadCurrentProduct: (
+    category: string,
+    productId: number
+  ) => async (dispatch: AppDispatch) => {
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {
       try {
@@ -94,7 +105,10 @@ export const ProductActionCreators = {
     }, 1000)
   },
 
-  getSortedProducts: (category: string, order = 'asc') => async (dispatch: AppDispatch) => {
+  getSortedProducts: (
+    category: string,
+    order = 'asc'
+  ) => async (dispatch: AppDispatch) => {
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {
       try {
@@ -110,4 +124,3 @@ export const ProductActionCreators = {
 }
 
 
-export default productReducer

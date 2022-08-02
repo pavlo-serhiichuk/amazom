@@ -7,14 +7,36 @@ const AppRouter = () => {
   const {isAuth} = useTypedSelector(state => state.auth)
   const navigate = useNavigate()
   useEffect(() => {
-    if (isAuth) navigate('/')
+    if (isAuth) {
+      navigate('/')
+    }
   }, [isAuth])
 
   return (
     <Routes>
-      {commonRoutes.map(route => <Route path={route.path} element={route.element} key={route.path} />)}
-      {!isAuth && publicRoutes.map(route => <Route path={route.path} element={route.element} key={route.path} />)}
-      {isAuth && privateRoutes.map(route => <Route path={route.path} element={route.element} key={route.path} />)}
+      {
+        commonRoutes.map(route =>
+          <Route
+            path={route.path}
+            element={route.element}
+            key={route.path}
+          />)
+      }
+      {
+        isAuth
+          ? privateRoutes.map(route =>
+            <Route
+              path={route.path}
+              element={route.element}
+              key={route.path}
+            />)
+          : publicRoutes.map(route =>
+            <Route
+              path={route.path}
+              element={route.element}
+              key={route.path}
+            />)
+      }
     </Routes>
   );
 };

@@ -1,6 +1,13 @@
 import {IArticle} from '../../models/IArticle'
 import {AppDispatch} from '../index'
-import {ArticleAction, ArticleEnum, ArticleState, SetArticlesAction, SetErrorAction, SetLoadingAction} from './types'
+import {
+  ArticleAction,
+  ArticleEnum,
+  ArticleState,
+  SetArticlesAction,
+  SetErrorAction,
+  SetLoadingAction
+} from './types'
 import {articlesAPI} from '../../api/api'
 
 const initialState: ArticleState = {
@@ -9,7 +16,10 @@ const initialState: ArticleState = {
   error: null
 }
 
-export default function articleReducer(state = initialState, action: ArticleAction) {
+export default function articleReducer(
+  state = initialState,
+  action: ArticleAction
+) {
   switch (action.type) {
     case ArticleEnum.SET_ARTICLES:
       return {...state, articles: action.payload}
