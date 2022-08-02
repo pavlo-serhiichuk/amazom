@@ -45,9 +45,9 @@ export const CartActionCreators = {
     type: CartEnum.SET_CART_ERROR,
     payload: error
   }),
-  setCartIds: (cartIds: number[]): ISetCartIdsActionType => ({
+  setCartIds: (cartIds: string): ISetCartIdsActionType => ({
     type: CartEnum.SET_CART_IDs,
-    payload: cartIds
+    payload: cartIds.split(',').filter(el => el !== '').map(Number)
   }),
 
   loadCart: () => async (dispatch: AppDispatch) => {
@@ -75,12 +75,12 @@ export const CartActionCreators = {
 
         const response = await preorderAPI.getPreorderProducts(newCardIds.split(',').join('&id='))
         dispatch(CartActionCreators.setCart(response.data))
-        dispatch(CartActionCreators.setCartIds(newCardIds.split(',').filter(el => el !== '').map(Number)))
+        dispatch(CartActionCreators.setCartIds(newCardIds))
         setLocalStorageIds('cart_ids', `${newCardIds}`)
       } else {
         const response = await preorderAPI.getPreorderProducts(cartId)
         dispatch(CartActionCreators.setCart(response.data))
-        dispatch(CartActionCreators.setCartIds([id]))
+        dispatch(CartActionCreators.setCartIds(cartId))
         setLocalStorageIds('cart_ids', cartId)
       }
 
@@ -95,10 +95,7 @@ export const CartActionCreators = {
       const cartIds = getLocalStorageIds('cart_ids')
 
       if (cartIds) {
-        const newCartIds = cartIds
-          .replace(`${cartId}`, '')
-          .split(',').filter(el => el !== '')
-          .map(Number)
+        const newCartIds = cartIds.replace(`${cartId}`, '')
 
         dispatch(CartActionCreators.setCartIds(newCartIds))
         setLocalStorageIds('cart_ids', newCartIds.toString())
