@@ -93,6 +93,20 @@ export const ProductActionCreators = {
       }
     }, 1000)
   },
+
+  getSortedProducts: (category: string, order = 'asc') => async (dispatch: AppDispatch) => {
+    dispatch(ProductActionCreators.setLoading(true))
+    setTimeout(async () => {
+      try {
+        let response = await productsAPI.getProductsSortedByPrice(category, order)
+        dispatch(ProductActionCreators.setProducts(response.data))
+      } catch (e: any) {
+        dispatch(ProductActionCreators.setError(e.message))
+      } finally {
+        dispatch(ProductActionCreators.setLoading(false))
+      }
+    }, 500)
+  }
 }
 
 

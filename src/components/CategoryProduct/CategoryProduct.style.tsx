@@ -25,12 +25,17 @@ export const Wrapper = styled.div`
   }
 `
 
+export const Info = styled.div`
+  
+`
+
 export const Details = styled.div`
   min-width: 190px;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 112px;
+  justify-content: space-between;
+  gap: 20px;
   align-content: space-between;
 `
 
@@ -59,10 +64,13 @@ export const AddToWishes = styled(LikedIcon)`
   cursor: pointer;
 `
 
+export const Price = styled.div`
+  margin-top: 10px;
+`
+
 export const Title = styled(NavLink)`
   font-weight: bold;
   font-size: 20px;
-  height: 90px;
 `
 
 export const Img = styled(NavLink)<ImgProps>`

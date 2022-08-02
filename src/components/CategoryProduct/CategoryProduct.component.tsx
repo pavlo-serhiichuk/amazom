@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
 import {IProduct} from '../../models/IProduct'
-import {AddToWishes, Button, Details, Img, Purchase, Title, Wrapper} from './CategoryProduct.style'
+import {AddToWishes, Button, Details, Img, Info, Price, Purchase, Title, Wrapper} from './CategoryProduct.style'
 import {useActions} from '../../hooks/useActions'
 
 interface ProductProps {
@@ -48,9 +48,13 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
           url={product.image[0]}
         />
         <Details>
+          <Info>
           <Title to={productPath}>
             {product.title}
           </Title>
+
+          <Price>${product.price}</Price>
+          </Info>
           <Purchase>
             {
               isCartProduct

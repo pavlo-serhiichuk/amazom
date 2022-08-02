@@ -1,51 +1,27 @@
 import React, {useState} from 'react';
+import {useActions} from '../../../hooks/useActions'
+import {useTypedSelector} from '../../../hooks/useTypedSelector'
 
 const FilterForm = () => {
-
   const [filter, setFilter] = useState('')
+  const {category} = useTypedSelector(state => state.product)
+  const {getSortedProducts} = useActions()
 
+  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setFilter(e.target.value)
+    getSortedProducts(category, filter)
+  }
 
   return (
-    <form action="">
-        <label>Sort By:&nbsp;</label>
-      <select value={filter}>
+    <form>
+      <label>Sort By:&nbsp;</label>
+      <select value={filter} onChange={handleChange}>
         <option value="empty">...</option>
-        <option value="lowToHigh">Price: Low to High</option>
-        <option value="highToLow">Price: High to Low</option>
+        <option value="desc">Price: Low to High</option>
+        <option value="asc">Price: High to Low</option>
       </select>
     </form>
   );
 };
 
 export default FilterForm;
-
-// import React from "react";
-// import { useForm, SubmitHandler } from "react-hook-form";
-//
-// enum FilterEnum {
-//   lowToHigh = "lowToHigh",
-//   highToLow = "highToLow",
-// }
-//
-// interface IFormInput {
-//   filter: FilterEnum;
-// }
-//
-// const FilterForm = () => {
-//   const { register, handleSubmit } = useForm<IFormInput>();
-//
-//   const onSubmit: SubmitHandler<IFormInput> = data => {
-//     console.log(data)
-//   }
-//
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <select {...register("filter")} >
-//         <option value="lowToHigh" onClick={() => console.log('clicked')}>Low to High</option>
-//         <option value="highToLow">High to Low</option>
-//       </select>
-//     </form>
-//   );
-// }
-//
-// export default FilterForm

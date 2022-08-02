@@ -1,41 +1,41 @@
 interface IBook {
   id: number
-  author: string
   title: string
-  category: string
-  genres: Array<string>
   price: number
+  category: string
+  description: string
   liked: string
   image: Array<string>
-  description: string
+  author: string
+  genres: Array<string>
 }
 
 interface IGuitar {
   id: number
-  producer: string
   title: string
-  category: string
-  type: string
   price: number
+  category: string
+  description: string
   liked: string
   image: Array<string>
-  description: string
+  producer: string
+  type: string
   features: Array<string>
 }
 
 interface IVoucher {
   id: number
   title: string
-  category: string
-  countryId: string
-  city: string
-  address: string
-  rating: string
   price: number
-  discount: string
+  category: string
+  description: string
   liked: string
   image: Array<string>
-  description: string
+  city: string
+  address: string
+  rating: number
+  discount: string
+  countryId: string
   conditions: Array<string>
 }
 

@@ -26,6 +26,9 @@ export const productsAPI = {
   getProducts(category: string, page: number = 1) {
     return get(`products?category=${category}`, page)
   },
+  getProductsSortedByPrice(category: string, order: string = 'asc') {
+    return get(`products?category=${category}&_sort=price&_order=${order}`)
+  },
   getCurrentProduct(category: string, productId: number) {
     return get(`products?category=${category}&id=${productId}`)
   }
