@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   justify-content: center;
-  //width: 100%;
   flex-wrap: wrap;
   gap: 10px;
 `
@@ -23,7 +22,6 @@ export const Content = styled.div`
 export const Options = styled.div`
   display: flex;
   justify-content: left;
-  //flex-wrap: wrap;
   gap: 10px;
   position: absolute;
   top: 400px;

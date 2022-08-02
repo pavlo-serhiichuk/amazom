@@ -3,7 +3,7 @@ import Market from '../pages/Market/Market.page'
 import Login from '../pages/Auth/Login.page'
 import SignUp from '../pages/Auth/SignUp.page'
 import Category from '../pages/Category/Category.page'
-import {RouteEnum} from '../utils/routes'
+import {RoutePath} from '../utils/paths'
 import Main from '../pages/Main/Main.page'
 import Articles from '../pages/Articles/Articles.page'
 import Product from '../components/Product/Product.component'
@@ -17,20 +17,20 @@ export interface IRoute {
 }
 
 export const commonRoutes = [
-  {path: RouteEnum.MAIN, element: <Main />},
-  {path: RouteEnum.MARKET, element: <Market />},
-  {path: RouteEnum.CATEGORY, element: <Category />},
-  {path: RouteEnum.ARTICLES, element: <Articles />},
-  {path: RouteEnum.PRODUCT, element: <Product />},
-  {path: RouteEnum.WISHES, element: <Wishes />},
-  {path: RouteEnum.CART, element: <Cart />},
+  {path: RoutePath.MAIN, element: <Main />},
+  {path: RoutePath.MARKET, element: <Market />},
+  {path: RoutePath.CATEGORY, element: <Category />},
+  {path: RoutePath.ARTICLES, element: <Articles />},
+  {path: RoutePath.PRODUCT, element: <Product />},
+  {path: RoutePath.WISHES, element: <Wishes />},
+  {path: RoutePath.CART, element: <Cart />},
 ]
 
 export const publicRoutes: IRoute[] = [
-  {path: RouteEnum.LOGIN, element: <Login />},
-  {path: RouteEnum.SIGNUP, element: <SignUp />},
+  {path: RoutePath.LOGIN, element: <Login />},
+  {path: RoutePath.SIGNUP, element: <SignUp />},
 ];
 
 export const privateRoutes: IRoute[] = [
-  {path: RouteEnum.ACCOUNT, element: <Account />},
+  {path: RoutePath.ACCOUNT, element: <Account />},
 ]

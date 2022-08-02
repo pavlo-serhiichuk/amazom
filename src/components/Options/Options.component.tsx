@@ -1,6 +1,6 @@
 import React from 'react';
 import Option from '../Option/Option.component'
-import {RouteEnum} from '../../utils/routes'
+import {RoutePath} from '../../utils/paths'
 import {Content, Wrapper} from './Options.style'
 import Appear from '../Appear/Appear'
 
@@ -19,31 +19,31 @@ const Options = () => {
   return (
     <Wrapper>
       <Content>
-        <Appear delay={randomNumber(700, 1100)}>
+        <Appear delay={randomNumber(500, 800)}>
         <Option
           title={'Find your book'}
-          to={RouteEnum.BOOKS}
+          to={RoutePath.BOOKS}
           url={optionImages.books}
         />
         </Appear>
-        <Appear delay={randomNumber(700, 1000)}>
+        <Appear delay={randomNumber(500, 800)}>
           <Option
             title={'Start to play the guitar'}
-            to={RouteEnum.GUITARS}
+            to={RoutePath.GUITARS}
             url={optionImages.guitars}
           />
         </Appear>
         <Appear delay={randomNumber(700, 1000)}>
           <Option
             title={'Get a vacation'}
-            to={RouteEnum.VOUCHERS}
+            to={RoutePath.VOUCHERS}
             url={optionImages.vacation}
           />
         </Appear>
         <Appear delay={randomNumber(700, 1100)}>
           <Option
             title={'Improve yourself'}
-            to={RouteEnum.ARTICLES}
+            to={RoutePath.ARTICLES}
             url={optionImages.articles}
           />
         </Appear>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import {A, Form, Input, Label, Submit, Title, TitleWrapper} from '../SignUpForm/SignUpForm.style'
-import {RouteEnum} from '../../utils/routes'
+import {RoutePath} from '../../utils/paths'
 import {useActions} from '../../hooks/useActions'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 
@@ -39,7 +39,7 @@ export default function LoginFormComponent() {
           or
         </Title>
       </TitleWrapper>
-      <A to={RouteEnum.SIGNUP}>Sign Up</A>
+      <A to={RoutePath.SIGNUP}>Sign Up</A>
     </Form>
   );
 }

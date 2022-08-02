@@ -1,4 +1,4 @@
-export enum RouteEnum {
+export enum RoutePath {
   ACCOUNT = '/account',
   MAIN = '/',
   MARKET = '/market',

@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
 import {A, Desktop, Mobile, Links, Amount} from './Header.style'
-import {RouteEnum} from '../../utils/routes'
+import {RoutePath} from '../../utils/paths'
 import Search from '../SearchForm/SearchForm.component'
 import {FaUserAstronaut as UserIcon} from 'react-icons/fa'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
@@ -19,20 +19,20 @@ const Header = memo(() => {
     <>
       <Desktop>
         <Links>
-          <A to={RouteEnum.MAIN}>Amazom</A>
-          <A to={RouteEnum.MARKET}>Market</A>
-          <A to={RouteEnum.ARTICLES}>Articles</A>
+          <A to={RoutePath.MAIN}>Amazom</A>
+          <A to={RoutePath.MARKET}>Market</A>
+          <A to={RoutePath.ARTICLES}>Articles</A>
         </Links>
         <Search />
         <Links>
-          <A to={RouteEnum.CART}>
+          <A to={RoutePath.CART}>
             <CartIcon size={iconSize}/>
             {
               !!cartIds.length
               && <Amount>{cartIds.length}</Amount>
             }
           </A>
-          <A to={RouteEnum.WISHES}>
+          <A to={RoutePath.WISHES}>
             <WishesIcon size={30} />
             {
               !!wishesIds.length
@@ -43,22 +43,22 @@ const Header = memo(() => {
           {
             isAuth
               ? <>
-                <A to={RouteEnum.ACCOUNT}><UserIcon size={iconSize} /></A>
+                <A to={RoutePath.ACCOUNT}><UserIcon size={iconSize} /></A>
               </>
               : <A to="/login"><LoginIcon size={iconSize} /></A>
           }
         </Links>
       </Desktop>
       <Mobile>
-        <A to={RouteEnum.MAIN}>Ama</A>
-        <A to={RouteEnum.MARKET}>M</A>
-        <A to={RouteEnum.ARTICLES}>Art</A>
-        <A to={RouteEnum.CART}>C</A>
-        <A to={RouteEnum.WISHES}>W</A>
+        <A to={RoutePath.MAIN}>Ama</A>
+        <A to={RoutePath.MARKET}>M</A>
+        <A to={RoutePath.ARTICLES}>Art</A>
+        <A to={RoutePath.CART}>C</A>
+        <A to={RoutePath.WISHES}>W</A>
         {
           isAuth
             ? <>
-              <A to={RouteEnum.ACCOUNT}>Acc</A>
+              <A to={RoutePath.ACCOUNT}>Acc</A>
             </>
             : <A to="/login"><LoginIcon size={iconSize} /></A>
         }

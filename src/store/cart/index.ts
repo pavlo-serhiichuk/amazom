@@ -57,6 +57,8 @@ export const CartActionCreators = {
       if (cartIds) {
         const response = await preorderAPI.getPreorderProducts(cartIds.split(',').join('&id='))
         dispatch(CartActionCreators.setCart(response.data))
+      } else {
+        dispatch(CartActionCreators.setCart([]))
       }
     } catch (e: any) {
       dispatch(CartActionCreators.setCartError(e.message))
@@ -89,62 +91,19 @@ export const CartActionCreators = {
 
   deleteCartId: (id: number) => async (dispatch: AppDispatch) => {
     try {
-      const wishesId = (id).toString()
-      const wishesIds = getLocalStorageIds('cart_ids')
+      const cartId = (id).toString()
+      const cartIds = getLocalStorageIds('cart_ids')
 
-      if (wishesIds) {
-        const newCartIds = wishesIds
-          .replace(`${wishesId}`, '')
+      if (cartIds) {
+        const newCartIds = cartIds
+          .replace(`${cartId}`, '')
           .split(',').filter(el => el !== '')
           .map(Number)
-
         dispatch(CartActionCreators.setCartIds(newCartIds))
-        setLocalStorageIds('cart_ids', newCartIds.join())
+        setLocalStorageIds('cart_ids', newCartIds.toString())
       }
     } catch (e: any) {
       dispatch(CartActionCreators.setCartError(e.message))
     }
   }
 }
-//
-// export const CartActionCreators = {
-//   setCart: (cart: IProduct[]): SetCartAction => ({type: CartEnum.SET_CART, payload: cart}),
-//   loadCart: () => async (dispatch: AppDispatch) => {
-//     const productsURL = localStorage.getItem('cart_ids')?.split(',').join('&id=')
-//
-//     if (productsURL) {
-//       const response = await preorderAPI.getPreorderProducts(productsURL)
-//       dispatch(CartActionCreators.setCart(response.data))
-//     }
-//   },
-//   addCartId: (id: number) => async (dispatch: AppDispatch) => {
-//     const cartId = (id).toString()
-//     const cartIds: string | null = localStorage.getItem('cart_ids')
-//
-//     if (cartIds) {
-//       if (cartIds.indexOf(cartId) >= 0) {
-//         return false
-//       }
-//
-//       const newCardIds = `${cartIds},${cartId}`
-//       localStorage.setItem('cart_ids', `${newCardIds}`)
-//
-//       const productsURL = newCardIds.split(',').join('&id=')
-//       const response = await preorderAPI.getPreorderProducts(productsURL)
-//       dispatch(CartActionCreators.setCart(response.data))
-//
-//     } else {
-//       localStorage.setItem('cart_ids', cartId)
-//       const response = await preorderAPI.getPreorderProducts(cartId)
-//       dispatch(CartActionCreators.setCart(response.data))
-//     }
-//   },
-//   deleteCartId: (id: number) => async (dispatch: AppDispatch) => {
-//     const wishesId = (id).toString()
-//     const wishesIds = localStorage.getItem('cart_ids')
-//
-//     if (wishesIds) {
-//       localStorage.setItem('cart_ids', wishesIds.replace(`${wishesId}`, '').split(',').join())
-//     }
-//   }
-// }

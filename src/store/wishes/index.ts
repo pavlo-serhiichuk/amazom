@@ -56,6 +56,8 @@ export const WishesActionCreators = {
       if (wishesIds) {
         const response = await preorderAPI.getPreorderProducts(wishesIds.split(',').join('&id='))
         dispatch(WishesActionCreators.setWishes(response.data))
+      } else {
+        dispatch(WishesActionCreators.setWishes([]))
       }
     } catch (e: any) {
       dispatch(WishesActionCreators.setError(e.message))
@@ -99,7 +101,7 @@ export const WishesActionCreators = {
           .map(Number)
 
         dispatch(WishesActionCreators.setWishesIds(newWishesIds))
-        setLocalStorageIds('wishes_ids', newWishesIds.join())
+        setLocalStorageIds('wishes_ids', newWishesIds.toString())
       }
     } catch (e: any) {
       dispatch(WishesActionCreators.setError(e.message))

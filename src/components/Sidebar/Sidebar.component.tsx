@@ -1,14 +1,14 @@
 import React, {memo} from 'react';
 import {Wrapper} from './Sidebar.style'
 import {StyledLink} from '../StyledLink/StyledLink.component'
-import {RouteEnum} from '../../utils/routes'
+import {RoutePath} from '../../utils/paths'
 
 const Sidebar = memo(() => {
   return (
     <Wrapper>
-        <StyledLink to={RouteEnum.BOOKS} category="books">Books</StyledLink>
-        <StyledLink to={RouteEnum.GUITARS} category="guitars">Guitars</StyledLink>
-        <StyledLink to={RouteEnum.VOUCHERS} category="vouchers">Vouchers</StyledLink>
+        <StyledLink to={RoutePath.BOOKS} category="books">Books</StyledLink>
+        <StyledLink to={RoutePath.GUITARS} category="guitars">Guitars</StyledLink>
+        <StyledLink to={RoutePath.VOUCHERS} category="vouchers">Vouchers</StyledLink>
     </Wrapper>
   );
 })

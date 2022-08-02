@@ -10,7 +10,7 @@ const Appear: FC<AppearProps> = ({children, delay}) => {
 
   return (
     <Spring
-      from={{ opacity: 0.8, marginTop: '600px' }}
+      from={{ opacity: 0.9, marginTop: '200px' }}
       to={[
         { opacity: 1, marginTop: '0px' },
       ]}

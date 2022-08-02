@@ -8,6 +8,8 @@ import {getLocalStorageIds} from './api/api'
 
 function App() {
   const {isAuth} = useTypedSelector(state => state.auth)
+  const {wishesIds} = useTypedSelector(state => state.wishes)
+  const {cartIds} = useTypedSelector(state => state.cart)
   const {
     loadCart,
     loadWishes,
@@ -18,8 +20,6 @@ function App() {
   const localCartIds = getLocalStorageIds('wishes_ids')
 
   useEffect(() => {
-    loadCart()
-    loadWishes()
 
     if (localWishesIds) {
       setWishesIds(localWishesIds?.split(',').filter(el => el !== '').map(Number))
@@ -29,6 +29,14 @@ function App() {
       setCartIds(localCartIds?.split(',').filter(el => el !== '').map(Number))
     }
   }, [])
+
+  useEffect(() => {
+    loadWishes()
+  }, [wishesIds])
+
+  useEffect(() => {
+    loadCart()
+  }, [cartIds])
 
   return (
     <>
