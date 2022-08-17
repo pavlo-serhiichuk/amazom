@@ -6,24 +6,21 @@ import Dropdown from '../Dropdown/Dropdown.component'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {RoutePath} from '../../utils/paths'
 import {searchAPI} from '../../api/api'
+import {useNavigate} from 'react-router-dom'
 
 const Search = memo(() => {
   const [productTitle, setProductTitle] = useState('')
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const debouncedSearch: any = useDebounce(productTitle, search, 1000)
   const {searchProducts} = useTypedSelector(state => state.search)
-  const {setSearch, fetchSearch} = useActions()
-
-  function search(query: string) {
-    fetchSearch(query)
-  }
-
+  // const navigate = useNavigate()
+  const {fetchSearch} = useActions()
   useEffect(() => {
     setProductTitle('')
   }, [])
 
-  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    search(productTitle)
+  function search(query: string) {
+    fetchSearch(query)
   }
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -32,17 +29,31 @@ const Search = memo(() => {
       return false
     }
     debouncedSearch(e.target.value)
+    setIsDropdownOpen(true)
+  }
+
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    search(productTitle)
   }
 
   const handleSearchButton = () => {
     setProductTitle('')
   }
 
+  const handleBlur = () => {
+    setIsDropdownOpen(false)
+  }
+
   return (
-    <Form action="" onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit}
+      // onBlur={handleBlur}
+    >
       <Input
         value={productTitle}
         onChange={onChange}
+        onClick={() => setIsDropdownOpen(true)}
       />
       <Button
         onClick={handleSearchButton}
@@ -50,13 +61,12 @@ const Search = memo(() => {
       >
         Search
       </Button>
-      {
-        productTitle
+      {productTitle
+        && isDropdownOpen
         && <Dropdown
               handleClear={() => setProductTitle('')}
               products={searchProducts}
-          />
-      }
+          />}
     </Form>
   );
 });

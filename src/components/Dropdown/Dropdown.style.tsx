@@ -25,6 +25,6 @@ export const DroppedProduct = styled.li`
   align-items: center;
 
 `
-export const Title = styled.span`
+export const Title = styled(NavLink)`
   cursor: pointer;
 `

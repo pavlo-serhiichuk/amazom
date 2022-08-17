@@ -7,23 +7,27 @@ import {useActions} from '../../hooks/useActions'
 interface DropdownProps {
   products: IProduct[],
   handleClear: () => void
+
 }
 
 const Dropdown: FC<DropdownProps> = ({products, handleClear}) => {
   const navigate = useNavigate()
   const {setCurrentProduct, setCategory} = useActions()
+
   const redirect = (product: IProduct) => {
     handleClear()
     setCurrentProduct(product)
     setCategory(product.category)
     navigate(`market/${product.category}/${product.id}`)
   }
+
   return (
     <Wrapper>
       {products.map(product =>
         <DroppedProduct key={product.id}>
           <Title
             onClick={() => redirect(product)}
+            to={`market/${product.category}/${product.id}`}
           >
             {product.title}
           </Title>
