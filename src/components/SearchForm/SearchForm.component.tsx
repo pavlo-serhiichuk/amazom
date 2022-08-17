@@ -5,6 +5,7 @@ import {Button, Form, Input} from './SearchForm.style'
 import Dropdown from '../Dropdown/Dropdown.component'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {RoutePath} from '../../utils/paths'
+import {searchAPI} from '../../api/api'
 
 const Search = memo(() => {
   const [productTitle, setProductTitle] = useState('')
@@ -13,10 +14,9 @@ const Search = memo(() => {
   const {setSearch} = useActions()
 
   function search(query: string) {
-    fetch(`http://localhost:1122/products?title_like=${query}`)
-      .then((data: any) => data.json())
-      .then((json: any) => {
-        setSearch(json)
+    searchAPI.getSearchedProducts(query)
+      .then((res: any) => {
+        setSearch(res.data)
       })
   }
 

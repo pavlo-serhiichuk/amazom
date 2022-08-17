@@ -46,5 +46,11 @@ export const articlesAPI = {
   }
 }
 
+export const searchAPI = {
+  getSearchedProducts(query: string) {
+    return axios.get(`http://localhost:1122/products?title_like=${query}`)
+  }
+}
+
 export const getLocalStorageIds = (key: string) => localStorage.getItem(key)
 export const setLocalStorageIds = (key: string, value: string) => localStorage.setItem(key, value)
