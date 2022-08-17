@@ -11,13 +11,10 @@ const Search = memo(() => {
   const [productTitle, setProductTitle] = useState('')
   const debouncedSearch: any = useDebounce(productTitle, search, 1000)
   const {searchProducts} = useTypedSelector(state => state.search)
-  const {setSearch} = useActions()
+  const {setSearch, fetchSearch} = useActions()
 
   function search(query: string) {
-    searchAPI.getSearchedProducts(query)
-      .then((res: any) => {
-        setSearch(res.data)
-      })
+    fetchSearch(query)
   }
 
   useEffect(() => {

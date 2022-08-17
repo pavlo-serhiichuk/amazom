@@ -33,8 +33,9 @@ export const SearchActionCreators = {
     type: SearchEnum.SET_SEARCH,
     payload: searchProducts
   }),
-  fetchSearch: (): IFetchSearchActionType => ({
-    type: SearchEnum.FETCH_SEARCH
+  fetchSearch: (query: string): IFetchSearchActionType => ({
+    type: SearchEnum.FETCH_SEARCH,
+    query
   }),
   setSearchLoading: (payload: boolean): ISetLoadingActionType => ({
     type: SearchEnum.SET_SEARCH_LOADING,

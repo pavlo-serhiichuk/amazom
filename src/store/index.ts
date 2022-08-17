@@ -21,7 +21,6 @@ const rootReducer =
     search
   })
 
-saga.run(rootWatcher)
 
 export const store = createStore(
   rootReducer,
@@ -30,6 +29,8 @@ export const store = createStore(
     saga
   )
 )
+
+saga.run(rootWatcher)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

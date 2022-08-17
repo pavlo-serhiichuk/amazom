@@ -20,6 +20,7 @@ export interface ISetSearchActionType {
 
 export interface IFetchSearchActionType {
   type: SearchEnum.FETCH_SEARCH
+  query: string
 }
 
 export interface ISetLoadingActionType {
