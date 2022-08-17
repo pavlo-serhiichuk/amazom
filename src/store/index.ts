@@ -9,23 +9,27 @@ import search from './search';
 import createSagaMiddleware from 'redux-saga'
 import {rootWatcher} from '../saga'
 
-// const saga = createSagaMiddleware()
+const saga = createSagaMiddleware()
 
-const rootReducer = combineReducers({
-  auth,
-  product,
-  article,
-  cart,
-  wishes,
-  search
-})
+const rootReducer =
+  combineReducers({
+    auth,
+    product,
+    article,
+    cart,
+    wishes,
+    search
+  })
 
-// saga.run(rootWatcher)
+saga.run(rootWatcher)
 
-export const store = createStore(rootReducer, applyMiddleware(
-  thunk,
-  // saga
-))
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    thunk,
+    saga
+  )
+)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
