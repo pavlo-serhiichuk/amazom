@@ -1,7 +1,7 @@
 import {put, takeEvery, call} from 'redux-saga/effects'
-import {IFetchSearchActionType, SearchEnum} from '../../store/search/types'
-import {SearchActionCreators} from '../../store/search'
-import {searchAPI} from '../../api/api'
+import {IFetchSearchActionType, SearchEnum} from '../store/search/types'
+import {SearchActionCreators} from '../store/search'
+import {searchAPI} from '../api/api'
 
 async function fetchSearchProducts(
   query: string) {

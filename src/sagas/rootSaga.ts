@@ -1,6 +1,6 @@
 import {all} from 'redux-saga/effects'
-import {watchOnSearchProducts} from './SearchSaga/SearchSaga'
-import {watchOnLoadArticles} from './ArticlesSaga/ArticlesSaga'
+import {watchOnSearchProducts} from './searchSaga'
+import {watchOnLoadArticles} from './articlesSaga'
 
 export function* rootWatcher() {
   yield all([

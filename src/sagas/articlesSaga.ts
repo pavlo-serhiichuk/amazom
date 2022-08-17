@@ -1,7 +1,7 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
-import {ArticleActionCreators} from '../../store/article'
-import {articlesAPI} from '../../api/api'
-import {ArticleEnum} from '../../store/article/types'
+import {ArticleActionCreators} from '../store/article'
+import {articlesAPI} from '../api/api'
+import {ArticleEnum} from '../store/article/types'
 
 async function loadArticlesFromAPI () {
   return await articlesAPI.getArticles()

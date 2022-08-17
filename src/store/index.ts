@@ -7,7 +7,7 @@ import product from './product'
 import wishes from './wishes';
 import search from './search';
 import createSagaMiddleware from 'redux-saga'
-import {rootWatcher} from '../saga'
+import {rootWatcher} from '../sagas/rootSaga'
 
 const saga = createSagaMiddleware()
 

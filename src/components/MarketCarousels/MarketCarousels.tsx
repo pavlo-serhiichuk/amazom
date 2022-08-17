@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {IProduct} from '../models/IProduct'
-import Carousel from '../components/Carousel/Carousel.component'
-import {productsAPI} from '../api/api'
-import Loader from '../components/Loader/Loader.component'
-import {MiddleTitle} from '../components/Title/Title.style'
+import {IProduct} from '../../models/IProduct'
+import Carousel from '../Carousel/Carousel.component'
+import {productsAPI} from '../../api/api'
+import Loader from '../Loader/Loader.component'
+import {MiddleTitle} from '../Title/Title.style'
 
 const MarketCarousels = () => {
   const [books, setBooks] = useState<IProduct[]>()
