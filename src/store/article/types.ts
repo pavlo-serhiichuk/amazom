@@ -9,12 +9,17 @@ export interface ArticleState {
 export enum ArticleEnum {
   SET_ARTICLES = 'SET_ARTICLES',
   SET_LOADING = 'SET_LOADING',
-  SET_ERROR = 'SET_ERROR'
+  SET_ERROR = 'SET_ERROR',
+  FETCH_ARTICLES = 'FETCH_ARTICLES'
 }
 
 export interface SetArticlesAction {
   type: ArticleEnum.SET_ARTICLES
   payload: IArticle[]
+}
+
+export interface FetchArticlesAction {
+  type: ArticleEnum.FETCH_ARTICLES
 }
 
 export interface SetLoadingAction {
@@ -27,4 +32,7 @@ export interface SetErrorAction {
   payload: string
 }
 
-export type ArticleAction = SetArticlesAction | SetLoadingAction | SetErrorAction
+export type ArticleAction =
+  SetArticlesAction
+  | SetLoadingAction
+  | SetErrorAction

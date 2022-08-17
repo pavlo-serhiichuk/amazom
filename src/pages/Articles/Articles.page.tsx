@@ -2,13 +2,16 @@ import React, {useEffect} from 'react';
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
 import ArticleIntro from '../../components/ArticleIntro/ArticleIntro.component'
+import Loader from '../../components/Loader/Loader.component'
 
 const Articles = () => {
-  const {articles} = useTypedSelector(state => state.article)
-  const {loadArticles} = useActions()
+  const {articles, isLoading} = useTypedSelector(state => state.article)
+  const {fetchArticles} = useActions()
   useEffect(() => {
-    loadArticles()
+    if(!articles.length) fetchArticles()
   }, [])
+
+  if(isLoading) return <Loader />
 
   return (
     <>

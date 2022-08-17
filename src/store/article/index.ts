@@ -1,14 +1,13 @@
 import {IArticle} from '../../models/IArticle'
-import {AppDispatch} from '../index'
 import {
   ArticleAction,
   ArticleEnum,
   ArticleState,
+  FetchArticlesAction,
   SetArticlesAction,
   SetErrorAction,
   SetLoadingAction
 } from './types'
-import {articlesAPI} from '../../api/api'
 
 const initialState: ArticleState = {
   articles: [] as IArticle[],
@@ -33,18 +32,22 @@ export default function articleReducer(
 }
 
 export const ArticleActionCreators = {
-  setArticles: (articles: IArticle[]): SetArticlesAction => ({type: ArticleEnum.SET_ARTICLES, payload: articles}),
-  setLoading: (isLoading: boolean): SetLoadingAction => ({type: ArticleEnum.SET_LOADING, payload: isLoading}),
-  setError: (error: string): SetErrorAction => ({type: ArticleEnum.SET_ERROR, payload: error}),
-  loadArticles: () => async (dispatch: AppDispatch) => {
-    dispatch(ArticleActionCreators.setLoading(true))
-    try {
-      const response = await articlesAPI.getArticles()
-      dispatch(ArticleActionCreators.setArticles(response.data))
-    } catch (e: any) {
-      dispatch(ArticleActionCreators.setError(e.message))
-    } finally {
-      dispatch(ArticleActionCreators.setLoading(false))
-    }
-  }
+  setArticles:
+    (articles: IArticle[]): SetArticlesAction => ({
+        type: ArticleEnum.SET_ARTICLES,
+        payload: articles
+      }),
+  setLoading:
+    (isLoading: boolean): SetLoadingAction => ({
+        type: ArticleEnum.SET_LOADING,
+        payload: isLoading
+      }),
+  setError:
+    (error: string): SetErrorAction => ({
+        type: ArticleEnum.SET_ERROR,
+        payload: error
+      }),
+  fetchArticles: (): FetchArticlesAction => ({
+    type: ArticleEnum.FETCH_ARTICLES
+  })
 }

@@ -3,11 +3,13 @@ import {IFetchSearchActionType, SearchEnum} from '../../store/search/types'
 import {SearchActionCreators} from '../../store/search'
 import {searchAPI} from '../../api/api'
 
-async function fetchSearchProducts(query: string) {
+async function fetchSearchProducts(
+  query: string) {
   return await searchAPI.getSearchedProducts(query)
 }
 
-export function* onSearchProducts({query}: IFetchSearchActionType) {
+function* onSearchProducts(
+  {query}: IFetchSearchActionType) {
   try {
     yield put(SearchActionCreators.setSearchLoading(true))
     const {data} = yield call(fetchSearchProducts, query)
@@ -18,5 +20,8 @@ export function* onSearchProducts({query}: IFetchSearchActionType) {
 }
 
 export function* watchOnSearchProducts() {
-  yield takeEvery(SearchEnum.FETCH_SEARCH, onSearchProducts)
+  yield takeEvery(
+    SearchEnum.FETCH_SEARCH,
+    onSearchProducts
+  )
 }
