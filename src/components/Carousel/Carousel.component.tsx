@@ -6,16 +6,17 @@ import {Img, Wrapper} from './Carousel.style'
 interface CarouselProps {
   products?: IProduct[]
   autoplaySpeed?: number
+  autoplay?: boolean
 }
 
-const Carousel: FC<CarouselProps> = ({products, autoplaySpeed = 2000}) => {
+const Carousel: FC<CarouselProps> = ({products, autoplay= true, autoplaySpeed = 2000}) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 2000,
+    speed: 4000,
     slidesToShow: 6,
     slidesToScroll: 2,
-    autoplay: true,
+    autoplay,
     autoplaySpeed: autoplaySpeed,
   };
 
@@ -23,7 +24,11 @@ const Carousel: FC<CarouselProps> = ({products, autoplaySpeed = 2000}) => {
     <Wrapper>
       <Slider {...settings}>
         {products?.map(product =>
-          <Img to={`/market/${product.category}/${product.id}`} url={product.image[0]}/>
+          <Img
+          key={product.id}
+          to={`/market/${product.category}/${product.id}`}
+          url={product.image[0]}
+          />
         )}
       </Slider>
     </Wrapper>

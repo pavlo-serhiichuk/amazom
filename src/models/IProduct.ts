@@ -39,4 +39,4 @@ interface IVoucher {
   conditions: Array<string>
 }
 
-export type IProduct = IBook | IGuitar | IVoucher
+export type IProduct = IBook & IGuitar & IVoucher

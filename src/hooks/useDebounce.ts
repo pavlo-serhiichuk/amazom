@@ -10,7 +10,6 @@ const useDebounce = (productTitle: string, callback: any, delay: any) => {
 
     timer.current = setTimeout(() => {
       if (productTitle.length > 0) {
-        debugger
         callback(...args)
       }
     } , delay)

@@ -1,8 +1,10 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Form = styled.form`
   display: flex;
   align-items: center;
+  margin-left: 40px;
   @media screen and (max-width: 992px) {
     display: none;
   }
@@ -20,7 +22,7 @@ export const Input = styled.input`
   @media screen and (max-width: 1200px) {width: 200px;}
 `
 
-export const Button = styled.button`
+export const Button = styled(NavLink)`
   font-size: 20px;
   height: 50px;
   color: #fff;

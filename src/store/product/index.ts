@@ -22,10 +22,9 @@ const initialState: ProductState = {
   totalCount: 0,
 }
 
-export default function productReducer (
+export default function productReducer(
   state = initialState,
-  action: ProductActionType)
-{
+  action: ProductActionType) {
   switch (action.type) {
     case ProductEnum.SET_PRODUCTS:
       return {...state, products: action.payload}
@@ -54,7 +53,10 @@ export const ProductActionCreators = {
   setCategory: (category: string): SetCategoryAction => ({type: ProductEnum.SET_CATEGORY, payload: category}),
   setLoading: (isLoading: boolean): SetLoadingAction => ({type: ProductEnum.SET_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: ProductEnum.SET_ERROR, payload: error}),
-  setTotalCount: (totalCount: number): setTotalCountAction => ({type: ProductEnum.SET_TOTAL_COUNT, payload: totalCount}),
+  setTotalCount: (totalCount: number): setTotalCountAction => ({
+    type: ProductEnum.SET_TOTAL_COUNT,
+    payload: totalCount
+  }),
   loadProducts: (
     category: string
   ) => async (dispatch: AppDispatch) => {
@@ -108,19 +110,20 @@ export const ProductActionCreators = {
   getSortedProducts: (
     category: string,
     order = 'asc'
-  ) => async (dispatch: AppDispatch) => {
-    dispatch(ProductActionCreators.setLoading(true))
-    setTimeout(async () => {
-      try {
-        let response = await productsAPI.getProductsSortedByPrice(category, order)
-        dispatch(ProductActionCreators.setProducts(response.data))
-      } catch (e: any) {
-        dispatch(ProductActionCreators.setError(e.message))
-      } finally {
-        dispatch(ProductActionCreators.setLoading(false))
-      }
-    }, 500)
-  }
+  ) =>
+    async (dispatch: AppDispatch) => {
+      dispatch(ProductActionCreators.setLoading(true))
+      setTimeout(async () => {
+        try {
+          let response = await productsAPI.getProductsSortedByPrice(category, order)
+          dispatch(ProductActionCreators.setProducts(response.data))
+        } catch (e: any) {
+          dispatch(ProductActionCreators.setError(e.message))
+        } finally {
+          dispatch(ProductActionCreators.setLoading(false))
+        }
+      }, 500)
+    }
 }
 
 

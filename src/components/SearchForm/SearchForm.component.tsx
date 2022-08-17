@@ -3,17 +3,19 @@ import useDebounce from '../../hooks/useDebounce'
 import {useActions} from '../../hooks/useActions'
 import {Button, Form, Input} from './SearchForm.style'
 import Dropdown from '../Dropdown/Dropdown.component'
+import {useTypedSelector} from '../../hooks/useTypedSelector'
+import {RoutePath} from '../../utils/paths'
 
 const Search = memo(() => {
   const [productTitle, setProductTitle] = useState('')
   const debouncedSearch: any = useDebounce(productTitle, search, 1000)
+  const {searchProducts} = useTypedSelector(state => state.search)
   const {setSearch} = useActions()
 
   function search(query: string) {
     fetch(`http://localhost:1122/products?title_like=${query}`)
       .then((data: any) => data.json())
       .then((json: any) => {
-        debugger
         setSearch(json)
       })
   }
@@ -35,11 +37,29 @@ const Search = memo(() => {
     debouncedSearch(e.target.value)
   }
 
+  const handleSearchButton = () => {
+    setProductTitle('')
+  }
+
   return (
     <Form action="" onSubmit={handleSubmit}>
-      <Input value={productTitle} onChange={onChange} />
-      <Button>Search</Button>
-      {/*<Dropdown />*/}
+      <Input
+        value={productTitle}
+        onChange={onChange}
+      />
+      <Button
+        onClick={handleSearchButton}
+        to={RoutePath.SEARCH}
+      >
+        Search
+      </Button>
+      {
+        productTitle
+        && <Dropdown
+              handleClear={() => setProductTitle('')}
+              products={searchProducts}
+          />
+      }
     </Form>
   );
 });

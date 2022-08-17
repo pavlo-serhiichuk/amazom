@@ -32,17 +32,23 @@ const MarketCarousels = () => {
 
   return (
     <>
-      <MiddleTitle>Bestsellers:</MiddleTitle>
+      <MiddleTitle>
+        Bestsellers:
+      </MiddleTitle>
       <Carousel
         products={books}
-        autoplaySpeed={1000}
+        autoplaySpeed={500}
       />
-      <MiddleTitle>Popular guitars:</MiddleTitle>
+      <MiddleTitle>
+        Popular guitars:
+      </MiddleTitle>
       <Carousel
         products={guitars}
-        autoplaySpeed={3000}
+        autoplaySpeed={5000}
       />
-      <MiddleTitle>Crowded hotels:</MiddleTitle>
+      <MiddleTitle>
+        Crowded hotels:
+      </MiddleTitle>
       <Carousel
         products={vouchers}
       />

@@ -6,10 +6,11 @@ import Category from '../pages/Category/Category.page'
 import {RoutePath} from '../utils/paths'
 import Main from '../pages/Main/Main.page'
 import Articles from '../pages/Articles/Articles.page'
-import Product from '../components/Product/Product.component'
+import Product from '../pages/Product/Product.page'
 import Account from '../pages/Account/Account.page'
 import Wishes from '../pages/Wishes/Wishes.page'
 import Cart from '../pages/Cart/Cart.page'
+import Search from '../pages/Search/Search.page'
 
 export interface IRoute {
   path: string
@@ -24,6 +25,7 @@ export const commonRoutes = [
   {path: RoutePath.PRODUCT, element: <Product />},
   {path: RoutePath.WISHES, element: <Wishes />},
   {path: RoutePath.CART, element: <Cart />},
+  {path: RoutePath.SEARCH, element: <Search />},
 ]
 
 export const publicRoutes: IRoute[] = [

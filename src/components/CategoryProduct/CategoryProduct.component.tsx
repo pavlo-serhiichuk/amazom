@@ -53,6 +53,9 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
             {product.title}
           </Title>
 
+          <Price>{product.author}</Price>
+          <Price>{product.city}{product.address}</Price>
+          <Price>{product.producer}</Price>
           <Price>${product.price}</Price>
           </Info>
           <Purchase>

@@ -6,6 +6,7 @@ export const MainTitle = styled.h1`
   background-color: #fff;
   margin: 30px;
 `
+
 export const SubTitle = styled.h2`
   margin: 0;
   background-color: #fff;
@@ -18,3 +19,4 @@ export const MiddleTitle = styled.h4`
 export const Caption = styled.p`
   margin: 0;
 `
+

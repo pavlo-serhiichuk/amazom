@@ -12,6 +12,7 @@ export enum RoutePath {
   SIGNUP = '/signup',
   LOGIN = '/login',
   WISHES = '/wishes',
-  CART = '/cart'
+  CART = '/cart',
+  SEARCH = '/search'
 }
 

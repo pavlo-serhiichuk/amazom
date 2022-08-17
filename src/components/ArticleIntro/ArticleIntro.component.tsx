@@ -1,15 +1,26 @@
 import React, {FC} from 'react';
 import {IArticle} from '../../models/IArticle'
-import {Wrapper} from './ArticleIntro.style'
+import {Img, IntroInfo, Title, Wrapper} from './ArticleIntro.style'
 
 interface ArticleIntroProps {
   article: IArticle
 }
 
 const ArticleIntro: FC<ArticleIntroProps> = ({article}) => {
+  console.log(article.id)
   return (
     <Wrapper>
-      {article.title}
+      <IntroInfo>
+        <Title
+          to={`#`}
+        >
+          {article.title}
+        </Title>
+      </IntroInfo>
+      <Img
+        to={`#`}
+        url={article.image}
+      />
     </Wrapper>
   );
 };

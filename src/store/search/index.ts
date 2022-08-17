@@ -12,7 +12,6 @@ export default function searchReducer(
 ) {
   switch (action.type) {
     case SearchEnum.SET_SEARCH:
-      debugger
       return {...state, searchProducts: action.payload}
     default:
       return {...state}
