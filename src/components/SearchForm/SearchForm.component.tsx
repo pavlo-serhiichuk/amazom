@@ -5,7 +5,6 @@ import {Button, Form, Input} from './SearchForm.style'
 import Dropdown from '../Dropdown/Dropdown.component'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {RoutePath} from '../../utils/paths'
-import {searchAPI} from '../../api/api'
 import {useNavigate} from 'react-router-dom'
 import {IProduct} from '../../models/IProduct'
 

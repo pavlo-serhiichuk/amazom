@@ -62,6 +62,8 @@ export const CartActionCreators = {
     try {
       const cartIds = getLocalStorageIds('cart_ids')
       if (cartIds) {
+        const filteredIds = cartIds.split(',').join('').split('')
+        console.log('cartIds: ', filteredIds)
         const response = await preorderAPI.getPreorderProducts(cartIds.split(',').join('&id='))
         dispatch(CartActionCreators.setCart(response.data))
       } else {

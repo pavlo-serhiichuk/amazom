@@ -23,9 +23,12 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
     }
   })
 
-  function checkIds (key: string) {
-    return localStorage.getItem(key)?.split(',').find(cartId => +cartId === product.id)
+  function checkIds(key: string) {
+    return localStorage
+      .getItem(key)?.split(',')
+      .find(cartId => +cartId === product.id)
   }
+
   const addToCart = () => {
     addCartId(product.id)
   }
@@ -42,45 +45,42 @@ const CategoryProduct: FC<ProductProps> = ({product}) => {
   }
 
   return (
-      <Wrapper>
-        <Img
-          to={productPath}
-          url={product.image[0]}
-        />
-        <Details>
-          <Info>
-          <Title to={productPath}>
-            {product.title}
-          </Title>
-
+    <Wrapper>
+      <Img
+        to={productPath}
+        url={product.image[0]}
+      />
+      <Details>
+        <Info>
+          <Title to={productPath}>{product.title}</Title>
           <Price>{product.author}</Price>
           <Price>{product.city}{product.address}</Price>
           <Price>{product.producer}</Price>
           <Price>${product.price}</Price>
-          </Info>
-          <Purchase>
-            {
-              isCartProduct
-                ? <Button
-                  onClick={deleteFromCart}
-                >
-                  Added
-                </Button>
-                : <Button
-                  onClick={addToCart}
-                  isCartProduct
-                >
-                  Add To Cart
-                </Button>
-            }
-            {
-              isWishesProduct
-                ? <AddToWishes size={60} onClick={deleteFromWishes} bgc={ 'lightseagreen'} />
-                : <AddToWishes size={60} onClick={addToWishes} bgc={'#9a99'} />
-            }
-          </Purchase>
-        </Details>
-      </Wrapper>
+        </Info>
+        <Purchase>
+          {
+            isCartProduct
+              ? <Button
+                onClick={deleteFromCart}
+              >
+                Added
+              </Button>
+              : <Button
+                onClick={addToCart}
+                isCartProduct
+              >
+                Add To Cart
+              </Button>
+          }
+          {
+            isWishesProduct
+              ? <AddToWishes size={60} onClick={deleteFromWishes} bgc={'lightseagreen'} />
+              : <AddToWishes size={60} onClick={addToWishes} bgc={'#9a99'} />
+          }
+        </Purchase>
+      </Details>
+    </Wrapper>
   );
 };
 
