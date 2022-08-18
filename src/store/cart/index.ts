@@ -17,7 +17,7 @@ import {
 const initialState: ICartState = {
   cart: [] as IProduct[],
   cartIds: [] as number[],
-  isLoading: true,
+  isLoading: false,
   error: ''
 }
 

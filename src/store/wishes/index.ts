@@ -5,6 +5,7 @@ import {
   setLocalStorageIds
 } from '../../api/api'
 import {
+  ISetLoadingActionType,
   ISetWishesActionType,
   ISetWishesErrorActionType,
   ISetWishesIdsActionType,
@@ -17,6 +18,7 @@ import {AppDispatch} from '../index'
 const initialState: IWishesState = {
   wishes: [] as IProduct[],
   wishesIds: [] as number[],
+  isLoading: false,
   error: ''
 }
 
@@ -29,6 +31,8 @@ export default function wishesReducer (
       return {...state, wishes: action.payload}
     case WishesEnum.SET_WISHES_IDs:
       return {...state, wishesIds: action.payload}
+    case WishesEnum.SET_LOADING:
+      return {...state, isLoading: action.payload}
     case WishesEnum.SET_WISHES_ERROR:
       return {...state, error: action.payload}
     default:
@@ -41,6 +45,10 @@ export const WishesActionCreators = {
     type: WishesEnum.SET_WISHES,
     payload: wishes
   }),
+  setLoading: (isLoading: boolean): ISetLoadingActionType => ({
+    type: WishesEnum.SET_LOADING,
+    payload: isLoading
+  }),
   setError: (error: string): ISetWishesErrorActionType => ({
     type: WishesEnum.SET_WISHES_ERROR,
     payload: error
@@ -51,6 +59,7 @@ export const WishesActionCreators = {
   }),
 
   loadWishes: () => async (dispatch: AppDispatch) => {
+    dispatch(WishesActionCreators.setLoading(true))
     try {
       const wishesIds = getLocalStorageIds('wishes_ids')
 
@@ -62,6 +71,8 @@ export const WishesActionCreators = {
       }
     } catch (e: any) {
       dispatch(WishesActionCreators.setError(e.message))
+    } finally {
+      dispatch(WishesActionCreators.setLoading(false))
     }
   },
 

@@ -12,7 +12,6 @@ const Cart = () => {
   const {cart, isLoading} = useTypedSelector(state => state.cart)
 
   if (isLoading) return <Loader />
-  debugger
   return (
     <Wrapper bgc={'rgba(204,240,255,0.73)'}>
       <SubTitle>Shopping Cart</SubTitle>
@@ -32,7 +31,6 @@ const Cart = () => {
                     price={200}
                     totalAmount={cart.length} />
             </Delayed>}
-
       </Content>
     </Wrapper>
   );

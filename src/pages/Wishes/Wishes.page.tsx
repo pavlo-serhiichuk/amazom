@@ -7,10 +7,11 @@ import {
 } from '../../components/PreorderProduct/PreorderProduct.component'
 import Delayed from '../../components/Delayed/Delayed'
 import PreorderCheck from '../../components/PreorderCheck/PreorderCheck.component'
+import Loader from '../../components/Loader/Loader.component'
 
 const Wishes = () => {
-  const {wishes} = useTypedSelector(state => state.wishes)
-  debugger
+  const {wishes, isLoading} = useTypedSelector(state => state.wishes)
+  if (isLoading) return <Loader />
   return (
     <Wrapper bgc={'#ebffba'}>
       <SubTitle>
@@ -32,10 +33,12 @@ const Wishes = () => {
           }
         </Products>
 
-        <PreorderCheck
-          price={200}
-          totalAmount={wishes.length}
-        />
+        { !isLoading
+          && <Delayed waitBeforeShow={100}>
+                < PreorderCheck
+                    price={200}
+                    totalAmount={wishes.length} />
+            </Delayed>}
       </Content>
     </Wrapper>
   );
