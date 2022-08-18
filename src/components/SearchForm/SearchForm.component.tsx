@@ -55,7 +55,7 @@ const Search = memo(() => {
   return (
     <Form onSubmit={handleSubmit}>
       <Input
-        placeholder={'Try your luck using our search...'}
+        placeholder={'Enter product name...'}
         value={productTitle}
         onChange={onChange}
         onClick={() => setIsDropdownOpen(true)}

@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
-import {IProduct} from '../../models/IProduct'
+import {IProduct} from '../../../models/IProduct'
 import {AddToWishes, Button, Details, Img, Info, Price, Purchase, Title, Wrapper} from './CategoryProduct.style'
-import {useActions} from '../../hooks/useActions'
+import {useActions} from '../../../hooks/useActions'
 
 interface ProductProps {
   product: IProduct

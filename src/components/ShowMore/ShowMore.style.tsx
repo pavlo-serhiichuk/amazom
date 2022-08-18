@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Wrapper} from '../CategoryProduct/CategoryProduct.style'
+import {Wrapper} from '../CategoryProducts/CategoryProduct/CategoryProduct.style'
 
 export const ShowWrapper = styled(Wrapper)`
   width: 250px;
