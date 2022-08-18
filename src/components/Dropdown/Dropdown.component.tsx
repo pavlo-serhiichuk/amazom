@@ -1,25 +1,13 @@
 import React, {FC} from 'react';
 import {DroppedProduct, Title, Wrapper} from './Dropdown.style'
 import {IProduct} from '../../models/IProduct'
-import {useNavigate} from 'react-router-dom'
-import {useActions} from '../../hooks/useActions'
 
 interface DropdownProps {
   products: IProduct[],
-  handleClear: () => void
-
+  redirect: (product: IProduct) => void
 }
 
-const Dropdown: FC<DropdownProps> = ({products, handleClear}) => {
-  const navigate = useNavigate()
-  const {setCurrentProduct, setCategory} = useActions()
-
-  const redirect = (product: IProduct) => {
-    handleClear()
-    setCurrentProduct(product)
-    setCategory(product.category)
-    navigate(`market/${product.category}/${product.id}`)
-  }
+const Dropdown: FC<DropdownProps> = ({products, redirect}) => {
 
   return (
     <Wrapper>

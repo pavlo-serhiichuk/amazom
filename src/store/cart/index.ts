@@ -4,7 +4,7 @@ import {
   CartEnum,
   ICartState,
   ISetCartErrorActionType,
-  ISetCartIdsActionType,
+  ISetCartIdsActionType, ISetLoadingActionType,
   SetCartAction
 } from './types'
 import {AppDispatch} from '../index'
@@ -17,6 +17,7 @@ import {
 const initialState: ICartState = {
   cart: [] as IProduct[],
   cartIds: [] as number[],
+  isLoading: true,
   error: ''
 }
 
@@ -29,6 +30,8 @@ export default function cartReducer(
       return {...state, cart: action.payload}
     case CartEnum.SET_CART_IDs:
       return {...state, cartIds: action.payload}
+    case CartEnum.SET_LOADING:
+      return {...state, isLoading: action.payload}
     case CartEnum.SET_CART_ERROR:
       return {...state, error: action.payload}
     default:
@@ -41,6 +44,10 @@ export const CartActionCreators = {
     type: CartEnum.SET_CART,
     payload: cart
   }),
+  setLoading: (isLoading: boolean): ISetLoadingActionType => ({
+    type: CartEnum.SET_LOADING,
+    payload: isLoading
+  }),
   setCartError: (error: string): ISetCartErrorActionType => ({
     type: CartEnum.SET_CART_ERROR,
     payload: error
@@ -51,9 +58,9 @@ export const CartActionCreators = {
   }),
 
   loadCart: () => async (dispatch: AppDispatch) => {
+    dispatch(CartActionCreators.setLoading(true))
     try {
       const cartIds = getLocalStorageIds('cart_ids')
-
       if (cartIds) {
         const response = await preorderAPI.getPreorderProducts(cartIds.split(',').join('&id='))
         dispatch(CartActionCreators.setCart(response.data))
@@ -62,6 +69,8 @@ export const CartActionCreators = {
       }
     } catch (e: any) {
       dispatch(CartActionCreators.setCartError(e.message))
+    } finally {
+      dispatch(CartActionCreators.setLoading(false))
     }
   },
 

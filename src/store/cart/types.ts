@@ -3,12 +3,14 @@ import {IProduct} from '../../models/IProduct'
 export enum CartEnum {
   SET_CART = 'SET_CART',
   SET_CART_IDs = 'SET_CART_IDs',
+  SET_LOADING = 'SET_LOADING',
   SET_CART_ERROR = 'SET_CART_ERROR'
 }
 
 export interface ICartState {
   cart: IProduct[]
   cartIds: number[]
+  isLoading: boolean
   error: string
 }
 
@@ -22,6 +24,11 @@ export interface ISetCartIdsActionType {
   payload: number[]
 }
 
+export interface ISetLoadingActionType {
+  type: CartEnum.SET_LOADING
+  payload: boolean
+}
+
 export interface ISetCartErrorActionType {
   type: CartEnum.SET_CART_ERROR
   payload: string
@@ -30,4 +37,5 @@ export interface ISetCartErrorActionType {
 export type CartActionType =
   SetCartAction
   | ISetCartIdsActionType
+  | ISetLoadingActionType
   | ISetCartErrorActionType

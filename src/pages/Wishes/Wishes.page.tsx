@@ -10,7 +10,7 @@ import PreorderCheck from '../../components/PreorderCheck/PreorderCheck.componen
 
 const Wishes = () => {
   const {wishes} = useTypedSelector(state => state.wishes)
-
+  debugger
   return (
     <Wrapper bgc={'#ebffba'}>
       <SubTitle>
@@ -31,6 +31,7 @@ const Wishes = () => {
             )
           }
         </Products>
+
         <PreorderCheck
           price={200}
           totalAmount={wishes.length}

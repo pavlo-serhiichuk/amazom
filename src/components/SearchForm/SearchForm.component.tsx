@@ -7,13 +7,16 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {RoutePath} from '../../utils/paths'
 import {searchAPI} from '../../api/api'
 import {useNavigate} from 'react-router-dom'
+import {IProduct} from '../../models/IProduct'
 
 const Search = memo(() => {
   const [productTitle, setProductTitle] = useState('')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const debouncedSearch: any = useDebounce(productTitle, search, 1000)
   const {searchProducts} = useTypedSelector(state => state.search)
-  // const navigate = useNavigate()
+  const {setCurrentProduct, setCategory} = useActions()
+  const navigate = useNavigate()
+
   const {fetchSearch} = useActions()
   useEffect(() => {
     setProductTitle('')
@@ -41,16 +44,18 @@ const Search = memo(() => {
     setProductTitle('')
   }
 
-  const handleBlur = () => {
+  const redirect = (product: IProduct) => {
+    setProductTitle('')
+    setCurrentProduct(product)
+    setCategory(product.category)
+    navigate(`market/${product.category}/${product.id}`)
     setIsDropdownOpen(false)
   }
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      // onBlur={handleBlur}
-    >
+    <Form onSubmit={handleSubmit}>
       <Input
+        placeholder={'Try your luck using our search...'}
         value={productTitle}
         onChange={onChange}
         onClick={() => setIsDropdownOpen(true)}
@@ -64,7 +69,7 @@ const Search = memo(() => {
       {productTitle
         && isDropdownOpen
         && <Dropdown
-              handleClear={() => setProductTitle('')}
+              redirect={redirect}
               products={searchProducts}
           />}
     </Form>
