@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react';
+import React, {FC} from 'react';
 import {IProduct} from '../../models/IProduct'
 import Delayed from '../Delayed/Delayed'
 import CategoryProduct from './CategoryProduct/CategoryProduct.component'

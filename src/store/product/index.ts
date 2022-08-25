@@ -73,7 +73,6 @@ export const ProductActionCreators = {
       }
     }, 500)
   },
-
   showMore: (
     category: string,
     loadedProducts: IProduct[],
@@ -89,7 +88,6 @@ export const ProductActionCreators = {
       }
     }, 600)
   },
-
   loadCurrentProduct: (
     category: string,
     productId: number
@@ -97,8 +95,8 @@ export const ProductActionCreators = {
     dispatch(ProductActionCreators.setLoading(true))
     setTimeout(async () => {
       try {
-        let response = await productsAPI.getCurrentProduct(category, productId)
-        dispatch(ProductActionCreators.setCurrentProduct(response.data[0]))
+        let {data} = await productsAPI.getCurrentProduct(category, productId)
+        dispatch(ProductActionCreators.setCurrentProduct(data[0]))
       } catch (e: any) {
         dispatch(ProductActionCreators.setError(e.message))
       } finally {
@@ -109,8 +107,7 @@ export const ProductActionCreators = {
 
   getSortedProducts: (
     category: string,
-    order = 'asc'
-  ) =>
+    order = 'asc') =>
     async (dispatch: AppDispatch) => {
       dispatch(ProductActionCreators.setLoading(true))
       setTimeout(async () => {

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const MainTitle = styled.h1`
-  margin: 0;
   font-size: 80px;
   background-color: #fff;
   margin: 30px;
@@ -12,7 +11,13 @@ export const SubTitle = styled.h2`
   background-color: #fff;
   padding: 20px 150px;
 `
-export const MiddleTitle = styled.h4`
+
+export const InformTitle = styled.h2`
+  margin: 0;
+  font-size: 40px;
+`
+
+export const MiddleTitle = styled.h3`
   margin: 0;
 `
 

@@ -16,6 +16,12 @@ export const Content = styled.div`
   justify-content: left;
   flex-direction: row;
 `
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 240px;
+`
 
 export const Products = styled.div``
 

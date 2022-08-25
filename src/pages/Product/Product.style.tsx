@@ -40,13 +40,20 @@ export const Img = styled.div<ImgProps>`
 `
 
 export const Info = styled.div`
+`
+
+export const Field = styled.div`
   display: flex;
   justify-content: left;
-  gap: 10px;
+  gap: 25px;
+  gap: 25px;
+  padding-bottom: 10px;
 `
+
 export const Property = styled.div`
-  
+  width: 100px;
+  font-weight: bold;
 `
 export const Description = styled.div`
-  
+
 `

@@ -3,12 +3,14 @@ import axios from 'axios'
 const serverURL = 'http://localhost:1122/'
 export const productsLimit = 12
 
-const get = async (url: string, page: number = 1) => await axios.get(`${serverURL}${url}`, {
+const getAll = async (url: string, page: number = 1) => await axios.get(`${serverURL}${url}`, {
   params: {
     _page: page,
       _limit: productsLimit
   }
 })
+
+const getSingle = async (url: string, page: number = 1) => await axios.get(`${serverURL}${url}`)
 
 const post = async (url: string, data: any) => await axios.post(`${serverURL}${url}`, data)
 const put = async (url: string, data: any) => await axios.put(`${serverURL}${url}`, {data})
@@ -24,25 +26,25 @@ export const authAPI = {
 
 export const productsAPI = {
   getProducts(category: string, page: number = 1) {
-    return get(`products?category=${category}`, page)
+    return getAll(`products?category=${category}`, page)
   },
   getProductsSortedByPrice(category: string, order: string = 'asc') {
-    return get(`products?category=${category}&_sort=price&_order=${order}`)
+    return getAll(`products?category=${category}&_sort=price&_order=${order}`)
   },
   getCurrentProduct(category: string, productId: number) {
-    return get(`products?category=${category}&id=${productId}`)
+    return getSingle(`products?category=${category}&id=${productId}`)
   }
 }
 
 export const preorderAPI = {
   getPreorderProducts(productsIds: string) {
-    return get(`products?id=${productsIds}`)
+    return getAll(`products?id=${productsIds}`)
   }
 }
 
 export const articlesAPI = {
   getArticles(page: number = 1) {
-    return get('articles', page)
+    return getAll('articles', page)
   }
 }
 
