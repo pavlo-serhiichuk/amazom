@@ -1,4 +1,4 @@
-export enum RoutePath {
+export enum PathEnum {
   ACCOUNT = '/account',
   MAIN = '/',
   MARKET = '/market',
@@ -13,6 +13,7 @@ export enum RoutePath {
   LOGIN = '/login',
   WISHES = '/wishes',
   CART = '/cart',
-  SEARCH = '/search'
+  SEARCH = '/search',
+  ERROR = '/error'
 }
 

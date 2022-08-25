@@ -17,7 +17,7 @@ const initialState: ProductState = {
   products: [] as IProduct[],
   currentProduct: {} as IProduct,
   category: '',
-  isLoading: false,
+  isLoading: true,
   error: null,
   totalCount: 0,
 }
@@ -92,19 +92,24 @@ export const ProductActionCreators = {
     category: string,
     productId: number
   ) => async (dispatch: AppDispatch) => {
+
     dispatch(ProductActionCreators.setLoading(true))
+
     setTimeout(async () => {
       try {
         let {data} = await productsAPI.getCurrentProduct(category, productId)
-        dispatch(ProductActionCreators.setCurrentProduct(data[0]))
+        if (data.length) {
+          dispatch(ProductActionCreators.setCurrentProduct(data[0]))
+        } else {
+          dispatch(ProductActionCreators.setError("Product wasn't found."))
+        }
       } catch (e: any) {
         dispatch(ProductActionCreators.setError(e.message))
       } finally {
         dispatch(ProductActionCreators.setLoading(false))
       }
-    }, 1000)
+    }, 2000)
   },
-
   getSortedProducts: (
     category: string,
     order = 'asc') =>

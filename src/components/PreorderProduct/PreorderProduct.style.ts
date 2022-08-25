@@ -63,6 +63,7 @@ export const AddToCart = styled.button<ButtonProps>`
   background-color: ${props => props.bgc || 'rgba(204, 240, 255, 0.73)'};
   cursor: pointer;
   opacity: 0.8;
+  box-sizing: border-box;
 
   &:hover {
     opacity: 0.9;
@@ -70,6 +71,7 @@ export const AddToCart = styled.button<ButtonProps>`
 
   &:active {
     opacity: 1;
+    border: 2px solid #3d76b0;
   }
 `
 

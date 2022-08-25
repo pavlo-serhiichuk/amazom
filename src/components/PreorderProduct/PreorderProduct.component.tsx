@@ -12,6 +12,7 @@ import {
 import {IProduct} from '../../models/IProduct'
 import {Caption, MiddleTitle} from '../Title/Title.style'
 import Delayed from '../Delayed/Delayed'
+import {PreorderEnum} from '../../utils/preorder'
 
 interface CartProductProps {
   preorderProduct: IProduct
@@ -44,10 +45,10 @@ export const PreorderProduct: FC<CartProductProps> = ({preorderProduct, index, p
           </Content>
         </ContentContainer>
         <BtnContainer>
-          {preorderType === 'wishes'
+          {preorderType === PreorderEnum.WISHES
             && <AddToCart>Add to cart</AddToCart>}
-          {preorderType === 'cart'
-            && <AddToCart>Buy</AddToCart>}
+          {preorderType === PreorderEnum.CART
+            && <AddToCart>Buy This Only</AddToCart>}
           <AddToCart bgc={'coral'}>Delete</AddToCart>
         </BtnContainer>
       </Wrapper>

@@ -38,7 +38,7 @@ export const productsAPI = {
 
 export const preorderAPI = {
   getPreorderProducts(productsIds: string) {
-    return getAll(`products?id=${productsIds}`)
+    return getSingle(`products?id=${productsIds}`)
   }
 }
 

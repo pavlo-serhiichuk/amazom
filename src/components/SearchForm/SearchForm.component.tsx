@@ -4,7 +4,7 @@ import {useActions} from '../../hooks/useActions'
 import {Button, Form, Input} from './SearchForm.style'
 import Dropdown from '../Dropdown/Dropdown.component'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
-import {RoutePath} from '../../utils/paths'
+import {PathEnum} from '../../utils/paths'
 import {useNavigate} from 'react-router-dom'
 import {IProduct} from '../../models/IProduct'
 
@@ -61,7 +61,7 @@ const Search = memo(() => {
       />
       <Button
         onClick={handleSearchButton}
-        to={RoutePath.SEARCH}
+        to={PathEnum.SEARCH}
       >
         Search
       </Button>
