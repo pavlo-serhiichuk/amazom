@@ -15,9 +15,3 @@
 4. Move to folder ```cd market```
 5. Install dependencies ```npm i``` or ```yarn```
 6. Run project locally ```npm run dev``` or ```yarn dev```
-
-
-
-
-
-

@@ -36,9 +36,25 @@ const Product = () => {
             && <Img url={product.image[0]} />}
         </ImgContainer>
         <Info>
+          {product.author && <Field>
+            <Property>Author:</Property>
+            <Description>{product.author}</Description>
+          </Field>}
+          {product.producer && <Field>
+            <Property>Producer:</Property>
+            <Description>{product.producer}</Description>
+          </Field>}
           <Field>
             <Property>Description:</Property>
             <Description>{product.description}</Description>
+          </Field>
+        <Field>
+            <Property>price:</Property>
+            <Description>{product.price}</Description>
+          </Field>
+        <Field>
+            <Property>address:</Property>
+            <Description>{product.address}</Description>
           </Field>
           <Field>
             <Property>price:</Property>
@@ -49,5 +65,14 @@ const Product = () => {
     </Wrapper>
   );
 };
+
+// title
+// price
+// category
+// description
+// liked
+// image
+// author
+// genres
 
 export default Product;
