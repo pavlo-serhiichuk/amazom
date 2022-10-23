@@ -9,8 +9,7 @@ interface CategoryProductsProps {
   products: IProduct[]
 }
 
-const CategoryProductsComponent:FC<CategoryProductsProps> = ({products}) => {
-
+const CategoryProducts:FC<CategoryProductsProps> = ({products}) => {
   return (
     <ProductsWrapper>
       {products?.map((product: IProduct, index) =>
@@ -25,4 +24,4 @@ const CategoryProductsComponent:FC<CategoryProductsProps> = ({products}) => {
     </ProductsWrapper>
   );
 };
-export default CategoryProductsComponent
+export default CategoryProducts

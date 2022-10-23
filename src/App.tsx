@@ -34,6 +34,7 @@ function App() {
     loadCart()
   }, [wishesIds, cartIds])
 
+  console.log('pull request')
   return (
     <>
       {
